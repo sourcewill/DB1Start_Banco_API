@@ -1,10 +1,12 @@
 package com.db1start.cidades.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.db1start.cidades.domain.entity.Cliente;
 import com.db1start.cidades.repository.ClienteRepository;
 
+@Service
 public class ClienteService {
 	
 	@Autowired

@@ -1,11 +1,13 @@
 package com.db1start.cidades.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.db1start.cidades.domain.entity.Agencia;
 import com.db1start.cidades.domain.entity.Cidade;
 import com.db1start.cidades.repository.AgenciaRepository;
 
+@Service
 public class AgenciaService {
 	
 	@Autowired
