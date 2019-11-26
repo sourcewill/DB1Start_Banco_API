@@ -16,10 +16,10 @@ public class Cidade {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(name = "nome", length = 60)
 	private String nome;
-	
+
 	@ManyToOne
 	@JoinColumn
 	private Estado uf;
@@ -27,6 +27,9 @@ public class Cidade {
 	public Cidade(String nome, Estado uf) {
 		this.nome = nome;
 		this.uf = uf;
+	}
+
+	public Cidade() {
 	}
 
 	public String getNome() {

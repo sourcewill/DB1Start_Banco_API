@@ -20,10 +20,10 @@ public class Estado {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(name = "nome", length = 60)
 	private String nome;
-	
+
 	@OneToMany(mappedBy = "uf", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Cidade> cidades;
 
@@ -32,12 +32,20 @@ public class Estado {
 		this.cidades = new ArrayList<>();
 	}
 
+	public Estado() {
+
+	}
+
 	public String getNome() {
 		return nome;
 	}
 
 	public List<Cidade> getCidades() {
 		return cidades;
+	}
+
+	public Long getId() {
+		return id;
 	}
 
 }
