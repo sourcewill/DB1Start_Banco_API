@@ -21,17 +21,9 @@ public class EstadoService {
 		estadoRepository.deleteAll();
 	}
 
-	public Estado findById(Long id) {
-		return estadoRepository.getOne(id);
-	}
-
 	public Estado buscarPorNome(String nome) {
 		return estadoRepository.findByNome(nome).orElseThrow(
 				() -> new RuntimeException("Estado com nome " + nome + " nao encontrado no banco de dados."));
-	}
-
-	public void deleteById(Long id) {
-		estadoRepository.deleteById(id);
 	}
 
 }
