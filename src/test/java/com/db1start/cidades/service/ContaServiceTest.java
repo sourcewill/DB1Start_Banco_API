@@ -81,5 +81,21 @@ public class ContaServiceTest {
 		assertEquals(valor, conta.getSaldo());
 		clean();
 	}
+	
+	@Test
+	public void deveSacarEmUmaConta() {
+		
+		Conta conta = criaContaParaTeste();
+		Long id = conta.getId();
+		Double saldoInicial = 100.0;
+		conta = contaService.depositar(id, saldoInicial);
+		
+		Double valorSacado = 30.0;
+		conta = contaService.sacar(id, valorSacado);
+		
+		Double saldoFinal = saldoInicial - valorSacado;
+		assertEquals(saldoFinal, conta.getSaldo());
+		clean();
+	}
 
 }
