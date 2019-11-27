@@ -27,6 +27,9 @@ public class Conta {
 	@ManyToOne
 	@JoinColumn
 	private Agencia agencia;
+	
+	@Column(name = "status")
+	private StatusConta status;
 
 	public Conta(Cliente cliente, Agencia agencia) {
 
@@ -34,12 +37,13 @@ public class Conta {
 			throw new RuntimeException("cliente nao pode ser nulo");
 		}
 		if (agencia == null) {
-			throw new RuntimeException("agente nao pode ser nula");
+			throw new RuntimeException("agencia nao pode ser nula");
 		}
 
 		this.saldo = 0.0;
 		this.cliente = cliente;
 		this.agencia = agencia;
+		this.status = StatusConta.ATIVA;
 	}
 
 	public Conta() {
@@ -61,5 +65,10 @@ public class Conta {
 	public Agencia getAgencia() {
 		return agencia;
 	}
+
+	public StatusConta getStatus() {
+		return status;
+	}
+	
 
 }
