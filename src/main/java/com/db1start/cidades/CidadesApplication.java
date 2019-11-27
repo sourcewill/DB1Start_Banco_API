@@ -36,12 +36,6 @@ public class CidadesApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CidadesApplication.class, args);
 		System.out.println("Iniciando...");
-		
-		Estado estado = estadoService.criar("Parana");
-		Cidade cidade = cidadeService.criar("Maringa", estado);
-		Agencia agencia = agenciaService.criar("123", cidade, "123");
-		Cliente cliente = clienteService.criar("William", "123");
-		Conta conta = contaService.criar(cliente, agencia);
 
 	}
 

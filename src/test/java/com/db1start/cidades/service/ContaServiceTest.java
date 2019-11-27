@@ -40,14 +40,19 @@ public class ContaServiceTest {
 		cidadeService.limpar();
 		estadoService.limpar();
 	}
-
-	@Test
-	public void deveCriarNovaConta() {
+	
+	private Conta criaContaParaTeste() {
 		Estado estado = estadoService.criar("Parana");
 		Cidade cidade = cidadeService.criar("Maringa", estado);
 		Agencia agencia = agenciaService.criar("123", cidade, "123");
 		Cliente cliente = clienteService.criar("William", "123");
-		Conta conta = contaService.criar(cliente, agencia);
+		return contaService.criar(cliente, agencia);
+	}
+
+	@Test
+	public void deveCriarNovaConta() {
+		
+		Conta conta = criaContaParaTeste();
 		
 		assertNotNull(conta);
 		clean();
@@ -55,11 +60,7 @@ public class ContaServiceTest {
 	
 	@Test
 	public void deveDeletarContaPorId() {
-		Estado estado = estadoService.criar("Parana");
-		Cidade cidade = cidadeService.criar("Maringa", estado);
-		Agencia agencia = agenciaService.criar("123", cidade, "123");
-		Cliente cliente = clienteService.criar("William", "123");
-		Conta conta = contaService.criar(cliente, agencia);
+		Conta conta = criaContaParaTeste();
 		Long id = conta.getId();
 		contaService.apagarConta(id);
 		try {
@@ -67,6 +68,17 @@ public class ContaServiceTest {
 		} catch (Exception e) {
 			assertEquals("Conta com id " + id + " nao encontrada no banco de dados.", e.getMessage());
 		}
+		clean();
+	}
+	
+	@Test
+	public void deveDepositarEmUmaConta() {
+		
+		Conta conta = criaContaParaTeste();
+		Long id = conta.getId();
+		Double valor = 99.5;
+		conta = contaService.depositar(id, valor);
+		assertEquals(valor, conta.getSaldo());
 		clean();
 	}
 

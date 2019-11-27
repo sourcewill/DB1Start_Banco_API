@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.db1start.cidades.domain.entity.Agencia;
 import com.db1start.cidades.domain.entity.Cliente;
@@ -58,6 +59,34 @@ public class ContaService {
 			}
 		}
 		return inativas;
+	}
+	
+	@Transactional
+	public Conta depositar(Long idConta, Double valor) {
+		Conta conta = buscarPorId(idConta);
+		conta.depositar(valor);
+		return conta; //Devolve a conta atualizada
+	}
+	
+	@Transactional
+	public Conta sacar(Long idConta, Double valor) {
+		Conta conta = buscarPorId(idConta);
+		conta.sacar(valor);
+		return conta; //Devolve a conta atualizada
+	}
+	
+	@Transactional
+	public Conta ativar(Long idConta) {
+		Conta conta = buscarPorId(idConta);
+		conta.ativar();
+		return conta; //Devolve a conta atualizada
+	}
+	
+	@Transactional
+	public Conta desativar(Long idConta) {
+		Conta conta = buscarPorId(idConta);
+		conta.desativar();
+		return conta; //Devolve a conta atualizada
 	}
 	
 	
