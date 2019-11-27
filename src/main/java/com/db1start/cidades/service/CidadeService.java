@@ -1,5 +1,7 @@
 package com.db1start.cidades.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,5 +37,10 @@ public class CidadeService {
 		return cidadeRepository.findById(id).orElseThrow(
 				() -> new RuntimeException("Cidade com id " + id + " nao encontrada no banco de dados."));
 	}
+	
+	public List<Cidade> buscarTodas(){
+		return cidadeRepository.findAll();
+	}
+	
 
 }
