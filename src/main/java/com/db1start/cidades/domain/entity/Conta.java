@@ -106,10 +106,10 @@ public class Conta {
 		this.status = StatusConta.ATIVA;
 	}
 
-	public void desaativar() {
+	public void desativar() {
 
 		if (status == StatusConta.INATIVA) {
-			throw new RuntimeException("A conta já está desativada.");
+			throw new RuntimeException("A conta já está inativa.");
 		}
 
 		this.status = StatusConta.INATIVA;
