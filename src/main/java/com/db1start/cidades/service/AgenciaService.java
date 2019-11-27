@@ -21,5 +21,10 @@ public class AgenciaService {
 	public void limpar() {
 		agenciaRepository.deleteAll();
 	}
+	
+	public Agencia buscarPorNumeroAgencia(String numeroAgencia) {
+		return agenciaRepository.findByNumeroAgencia(numeroAgencia).orElseThrow(
+				() -> new RuntimeException("Agencia com numero " + numeroAgencia + " nao encontrada no banco de dados."));
+	}
 
 }

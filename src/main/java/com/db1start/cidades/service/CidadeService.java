@@ -21,5 +21,10 @@ public class CidadeService {
 	public void limpar() {
 		cidadeRepository.deleteAll();
 	}
+	
+	public Cidade buscarPorNome(String nome) {
+		return cidadeRepository.findByNome(nome).orElseThrow(
+				() -> new RuntimeException("Cidade com nome " + nome + " nao encontrada no banco de dados."));
+	}
 
 }

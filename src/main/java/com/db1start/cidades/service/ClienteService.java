@@ -20,5 +20,10 @@ public class ClienteService {
 	public void limpar() {
 		clienteRepository.deleteAll();
 	}
+	
+	public Cliente buscarPorNome(String nome) {
+		return clienteRepository.findByNome(nome).orElseThrow(
+				() -> new RuntimeException("Cliente com nome " + nome + " nao encontrado no banco de dados."));
+	}
 
 }
