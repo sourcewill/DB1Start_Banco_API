@@ -9,5 +9,6 @@ import com.db1start.cidades.domain.entity.Cidade;
 public interface CidadeRepository extends JpaRepository<Cidade, Long>{
 	
 	Optional<Cidade> findByNome(String nome);
-
+	
+	Optional<Cidade> findById(Long id);
 }

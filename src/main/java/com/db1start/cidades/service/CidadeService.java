@@ -26,5 +26,14 @@ public class CidadeService {
 		return cidadeRepository.findByNome(nome).orElseThrow(
 				() -> new RuntimeException("Cidade com nome " + nome + " nao encontrada no banco de dados."));
 	}
+	
+	public void apagarCidade(Long id) {
+		cidadeRepository.deleteById(id);
+	}
+	
+	public Cidade buscarPorId(Long id) {
+		return cidadeRepository.findById(id).orElseThrow(
+				() -> new RuntimeException("Cidade com id " + id + " nao encontrada no banco de dados."));
+	}
 
 }

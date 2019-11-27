@@ -26,5 +26,14 @@ public class AgenciaService {
 		return agenciaRepository.findByNumeroAgencia(numeroAgencia).orElseThrow(
 				() -> new RuntimeException("Agencia com numero " + numeroAgencia + " nao encontrada no banco de dados."));
 	}
+	
+	public void apagarAgencia(Long id) {
+		agenciaRepository.deleteById(id);
+	}
+	
+	public Agencia buscarPorId(Long id) {
+		return agenciaRepository.findById(id).orElseThrow(
+				() -> new RuntimeException("Agencia com id " + id + " nao encontrada no banco de dados."));
+	}
 
 }

@@ -22,4 +22,13 @@ public class ContaService {
 	public void limpar() {
 		contaRepository.deleteAll();
 	}
+	
+	public void apagarConta(Long id) {
+		contaRepository.deleteById(id);
+	}
+	
+	public Conta buscarPorId(Long id) {
+		return contaRepository.findById(id).orElseThrow(
+				() -> new RuntimeException("Conta com id " + id + " nao encontrada no banco de dados."));
+	}
 }
