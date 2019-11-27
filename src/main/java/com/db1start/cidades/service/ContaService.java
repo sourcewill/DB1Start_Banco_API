@@ -31,4 +31,5 @@ public class ContaService {
 		return contaRepository.findById(id).orElseThrow(
 				() -> new RuntimeException("Conta com id " + id + " nao encontrada no banco de dados."));
 	}
+
 }

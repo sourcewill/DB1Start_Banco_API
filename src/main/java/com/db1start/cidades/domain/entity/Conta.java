@@ -27,7 +27,7 @@ public class Conta {
 	@ManyToOne
 	@JoinColumn
 	private Agencia agencia;
-	
+
 	@Column(name = "status")
 	private StatusConta status;
 
@@ -69,6 +69,50 @@ public class Conta {
 	public StatusConta getStatus() {
 		return status;
 	}
-	
+
+	public void depositar(Double valor) {
+
+		if (valor == null) {
+			throw new RuntimeException("Valor nao pode ser nulo.");
+		}
+		if (valor <= 0) {
+			throw new RuntimeException("Valor deve ser maior que zero.");
+		}
+
+		this.saldo += valor;
+	}
+
+	public void sacar(Double valor) {
+
+		if (valor == null) {
+			throw new RuntimeException("Valor nao pode ser nulo.");
+		}
+		if (valor <= 0) {
+			throw new RuntimeException("Valor deve ser maior que zero.");
+		}
+		if (valor > this.saldo) {
+			throw new RuntimeException("Valor é maior do que o saldo atual.");
+		}
+
+		this.saldo -= valor;
+	}
+
+	public void ativar() {
+
+		if (status == StatusConta.ATIVA) {
+			throw new RuntimeException("A conta já está ativa.");
+		}
+
+		this.status = StatusConta.ATIVA;
+	}
+
+	public void desaativar() {
+
+		if (status == StatusConta.INATIVA) {
+			throw new RuntimeException("A conta já está desativada.");
+		}
+
+		this.status = StatusConta.INATIVA;
+	}
 
 }
