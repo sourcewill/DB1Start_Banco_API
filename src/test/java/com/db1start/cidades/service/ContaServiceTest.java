@@ -1,6 +1,7 @@
 package com.db1start.cidades.service;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -49,6 +50,23 @@ public class ContaServiceTest {
 		Conta conta = contaService.criar(cliente, agencia);
 		
 		assertNotNull(conta);
+		clean();
+	}
+	
+	@Test
+	public void deveDeletarContaPorId() {
+		Estado estado = estadoService.criar("Parana");
+		Cidade cidade = cidadeService.criar("Maringa", estado);
+		Agencia agencia = agenciaService.criar("123", cidade, "123");
+		Cliente cliente = clienteService.criar("William", "123");
+		Conta conta = contaService.criar(cliente, agencia);
+		Long id = conta.getId();
+		contaService.apagarConta(id);
+		try {
+			contaService.buscarPorId(id);
+		} catch (Exception e) {
+			assertEquals("Conta com id " + id + " nao encontrada no banco de dados.", e.getMessage());
+		}
 		clean();
 	}
 

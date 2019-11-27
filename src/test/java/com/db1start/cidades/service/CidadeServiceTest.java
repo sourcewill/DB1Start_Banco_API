@@ -1,6 +1,7 @@
 package com.db1start.cidades.service;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,6 +33,20 @@ public class CidadeServiceTest {
 		Cidade cidade = cidadeService.criar("Maringa", estado);
 		assertNotNull(cidade);
 		System.out.println("Cidade: " + cidade.getNome() + " | Estado: " + cidade.getUf().getNome());
+		clean();
+	}
+	
+	@Test
+	public void deveDeletarCidadePorId() {
+		Estado estado = estadoService.criar("Parana");
+		Cidade cidade = cidadeService.criar("Maringa", estado);
+		Long id = cidade.getId();
+		cidadeService.apagarCidade(id);
+		try {
+			cidadeService.buscarPorId(id);
+		} catch (Exception e) {
+			assertEquals("Cidade com id " + id + " nao encontrada no banco de dados.", e.getMessage());
+		}
 		clean();
 	}
 

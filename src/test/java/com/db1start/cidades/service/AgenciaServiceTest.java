@@ -1,6 +1,7 @@
 package com.db1start.cidades.service;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -38,6 +39,21 @@ public class AgenciaServiceTest {
 		Agencia agencia = agenciaService.criar("123", cidade, "123");
 		
 		assertNotNull(agencia);
+		clean();
+	}
+	
+	@Test
+	public void deveDeletarAgenciaPorId() {
+		Estado estado = estadoService.criar("Parana");
+		Cidade cidade = cidadeService.criar("Maringa", estado);
+		Agencia agencia = agenciaService.criar("1", cidade, "123");
+		Long id = agencia.getId();
+		agenciaService.apagarAgencia(id);
+		try {
+			agenciaService.buscarPorId(id);
+		} catch (Exception e) {
+			assertEquals("Agencia com id " + id + " nao encontrada no banco de dados.", e.getMessage());
+		}
 		clean();
 	}
 

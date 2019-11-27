@@ -48,4 +48,8 @@ public class Cidade {
 		return uf;
 	}
 
+	public Long getId() {
+		return id;
+	}
+
 }

@@ -47,5 +47,18 @@ public class EstadoServiceTest {
 			assertEquals("Estado com nome Acre nao encontrado no banco de dados.", e.getMessage());
 		}
 	}
+	
+	@Test
+	public void deveDeletarContaPorId() {
+		Estado estado = estadoService.criar("Parana");
+		Long id = estado.getId();
+		estadoService.apagarEstado(id);
+		try {
+			estadoService.buscarPorId(id);
+		} catch (Exception e) {
+			assertEquals("Estado com id " + id + " nao encontrado no banco de dados.", e.getMessage());
+		}
+		clean();
+	}
 
 }
