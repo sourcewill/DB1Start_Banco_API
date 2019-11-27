@@ -25,6 +25,14 @@ public class Cidade {
 	private Estado uf;
 
 	public Cidade(String nome, Estado uf) {
+
+		if (nome == null) {
+			throw new RuntimeException("nome nao pode ser nulo");
+		}
+		if (uf == null) {
+			throw new RuntimeException("uf nao pode ser nulo");
+		}
+
 		this.nome = nome;
 		this.uf = uf;
 	}

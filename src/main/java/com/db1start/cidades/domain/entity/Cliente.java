@@ -22,6 +22,14 @@ public class Cliente {
 	private String cpf;
 
 	public Cliente(String nome, String cpf) {
+
+		if (nome == null) {
+			throw new RuntimeException("nome nao pode ser nulo");
+		}
+		if (cpf == null) {
+			throw new RuntimeException("cpf nao pode ser nulo");
+		}
+
 		this.nome = nome;
 		this.cpf = cpf;
 	}

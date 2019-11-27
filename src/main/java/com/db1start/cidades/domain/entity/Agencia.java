@@ -28,6 +28,17 @@ public class Agencia {
 	private String numeroBanco;
 
 	public Agencia(String numeroAgencia, Cidade cidade, String numeroBanco) {
+
+		if (numeroAgencia == null) {
+			throw new RuntimeException("numeroAgencia nao pode ser nulo");
+		}
+		if (cidade == null) {
+			throw new RuntimeException("cidade nao pode ser nula");
+		}
+		if (numeroBanco == null) {
+			throw new RuntimeException("numeroBanco nao pode ser nulo");
+		}
+
 		this.numeroAgencia = numeroAgencia;
 		this.cidade = cidade;
 		this.numeroBanco = numeroBanco;

@@ -28,6 +28,11 @@ public class Estado {
 	private List<Cidade> cidades;
 
 	public Estado(String nome) {
+
+		if (nome == null) {
+			throw new RuntimeException("nome nao pode ser nulo");
+		}
+
 		this.nome = nome;
 		this.cidades = new ArrayList<>();
 	}

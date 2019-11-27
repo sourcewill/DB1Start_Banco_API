@@ -29,6 +29,14 @@ public class Conta {
 	private Agencia agencia;
 
 	public Conta(Cliente cliente, Agencia agencia) {
+
+		if (cliente == null) {
+			throw new RuntimeException("cliente nao pode ser nulo");
+		}
+		if (agencia == null) {
+			throw new RuntimeException("agente nao pode ser nula");
+		}
+
 		this.saldo = 0.0;
 		this.cliente = cliente;
 		this.agencia = agencia;
