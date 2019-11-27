@@ -32,6 +32,7 @@ public class Conta {
 		this.saldo = 0.0;
 		this.cliente = cliente;
 		this.agencia = agencia;
+		agencia.getContas().add(this);
 	}
 
 	public Conta() {
