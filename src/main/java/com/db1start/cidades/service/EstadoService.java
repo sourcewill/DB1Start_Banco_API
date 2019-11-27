@@ -1,5 +1,7 @@
 package com.db1start.cidades.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,14 +27,18 @@ public class EstadoService {
 		return estadoRepository.findByNome(nome).orElseThrow(
 				() -> new RuntimeException("Estado com nome " + nome + " nao encontrado no banco de dados."));
 	}
-	
+
 	public void apagarEstado(Long id) {
 		estadoRepository.deleteById(id);
 	}
-	
+
 	public Estado buscarPorId(Long id) {
-		return estadoRepository.findById(id).orElseThrow(
-				() -> new RuntimeException("Estado com id " + id + " nao encontrado no banco de dados."));
+		return estadoRepository.findById(id)
+				.orElseThrow(() -> new RuntimeException("Estado com id " + id + " nao encontrado no banco de dados."));
+	}
+
+	public List<Estado> buscarTodas() {
+		return estadoRepository.findAll();
 	}
 
 }

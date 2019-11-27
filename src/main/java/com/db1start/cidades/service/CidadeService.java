@@ -1,5 +1,6 @@
 package com.db1start.cidades.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,36 +12,45 @@ import com.db1start.cidades.repository.CidadeRepository;
 
 @Service
 public class CidadeService {
-	
+
 	@Autowired
 	private CidadeRepository cidadeRepository;
-	
+
 	public Cidade criar(String nome, Estado uf) {
 		Cidade cidade = new Cidade(nome, uf);
 		return cidadeRepository.save(cidade);
 	}
-	
+
 	public void limpar() {
 		cidadeRepository.deleteAll();
 	}
-	
+
 	public Cidade buscarPorNome(String nome) {
 		return cidadeRepository.findByNome(nome).orElseThrow(
 				() -> new RuntimeException("Cidade com nome " + nome + " nao encontrada no banco de dados."));
 	}
-	
+
 	public void apagarCidade(Long id) {
 		cidadeRepository.deleteById(id);
 	}
-	
+
 	public Cidade buscarPorId(Long id) {
-		return cidadeRepository.findById(id).orElseThrow(
-				() -> new RuntimeException("Cidade com id " + id + " nao encontrada no banco de dados."));
+		return cidadeRepository.findById(id)
+				.orElseThrow(() -> new RuntimeException("Cidade com id " + id + " nao encontrada no banco de dados."));
 	}
-	
-	public List<Cidade> buscarTodas(){
+
+	public List<Cidade> buscarTodasCidades() {
 		return cidadeRepository.findAll();
 	}
-	
+
+	public List<Cidade> buscarTodasCidadesEmUmEstado(Estado estado) {
+		List<Cidade> cidades = new ArrayList<>();
+		for (Cidade cidade : buscarTodasCidades()) {
+			if (cidade.getUf().equals(estado)) {
+				cidades.add(cidade);
+			}
+		}
+		return cidades;
+	}
 
 }
