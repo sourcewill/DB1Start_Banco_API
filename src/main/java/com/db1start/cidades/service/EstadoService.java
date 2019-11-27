@@ -37,7 +37,7 @@ public class EstadoService {
 				.orElseThrow(() -> new RuntimeException("Estado com id " + id + " nao encontrado no banco de dados."));
 	}
 
-	public List<Estado> buscarTodas() {
+	public List<Estado> buscarTodosEstados() {
 		return estadoRepository.findAll();
 	}
 

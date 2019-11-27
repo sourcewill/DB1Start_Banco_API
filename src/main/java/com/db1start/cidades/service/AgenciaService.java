@@ -39,13 +39,13 @@ public class AgenciaService {
 				() -> new RuntimeException("Agencia com id " + id + " nao encontrada no banco de dados."));
 	}
 	
-	public List<Agencia> buscarTodas(){
+	public List<Agencia> buscarTodasAgencias(){
 		return agenciaRepository.findAll();
 	}
 	
 	public List<Agencia> buscarTodasAgenciasEmUmaCidade(Cidade cidade){
 		List<Agencia> agencias = new ArrayList<>();
-		for(Agencia agencia: buscarTodas()) {
+		for(Agencia agencia: buscarTodasAgencias()) {
 			if(agencia.getCidade().equals(cidade)) {
 				agencias.add(agencia);
 			}
