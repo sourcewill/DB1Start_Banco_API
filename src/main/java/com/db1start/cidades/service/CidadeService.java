@@ -16,22 +16,17 @@ public class CidadeService {
 	@Autowired
 	private CidadeRepository cidadeRepository;
 
+	// CRIAR
+
 	public Cidade criar(String nome, Estado uf) {
 		Cidade cidade = new Cidade(nome, uf);
 		return cidadeRepository.save(cidade);
 	}
 
-	public void limpar() {
-		cidadeRepository.deleteAll();
-	}
+	// BUSCAR
 
-	public Cidade buscarCidadePorNome(String nome) {
-		return cidadeRepository.findByNome(nome).orElseThrow(
-				() -> new RuntimeException("Cidade com nome " + nome + " nao encontrada no banco de dados."));
-	}
-
-	public void apagarCidadePorId(Long id) {
-		cidadeRepository.deleteById(id);
+	public List<Cidade> buscarTodasCidades() {
+		return cidadeRepository.findAll();
 	}
 
 	public Cidade buscarCidadePorId(Long id) {
@@ -39,8 +34,9 @@ public class CidadeService {
 				.orElseThrow(() -> new RuntimeException("Cidade com id " + id + " nao encontrada no banco de dados."));
 	}
 
-	public List<Cidade> buscarTodasCidades() {
-		return cidadeRepository.findAll();
+	public Cidade buscarCidadePorNome(String nome) {
+		return cidadeRepository.findByNome(nome).orElseThrow(
+				() -> new RuntimeException("Cidade com nome " + nome + " nao encontrada no banco de dados."));
 	}
 
 	public List<Cidade> buscarTodasCidadesEmUmEstado(Estado estado) {
@@ -51,6 +47,16 @@ public class CidadeService {
 			}
 		}
 		return cidades;
+	}
+
+	// APAGAR
+
+	public void apagarTodasCidades() {
+		cidadeRepository.deleteAll();
+	}
+
+	public void apagarCidadePorId(Long id) {
+		cidadeRepository.deleteById(id);
 	}
 
 }

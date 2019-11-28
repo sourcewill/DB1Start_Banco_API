@@ -23,7 +23,7 @@ public class CidadeServiceTest {
 	private EstadoService estadoService;
 	
 	private void clean() {
-		cidadeService.limpar();
+		cidadeService.apagarTodasCidades();
 		estadoService.apagarTodosEstados();
 	}
 
