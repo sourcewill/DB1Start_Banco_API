@@ -19,7 +19,7 @@ public class ClienteServiceTest {
 	private ClienteService clienteService;
 	
 	private void clean() {
-		clienteService.limpar();
+		clienteService.apagarTodosClientes();
 	}
 
 	@Test
@@ -34,7 +34,7 @@ public class ClienteServiceTest {
 	public void deveDeletarClientePorId() {
 		Cliente cliente = clienteService.criar("William", "123");
 		Long id = cliente.getId();
-		clienteService.apagarClientePorNome(id);
+		clienteService.apagarClientePorId(id);
 		try {
 			clienteService.buscarClientePorId(id);
 		} catch (Exception e) {

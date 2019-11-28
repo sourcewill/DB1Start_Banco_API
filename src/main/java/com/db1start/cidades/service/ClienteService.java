@@ -14,22 +14,17 @@ public class ClienteService {
 	@Autowired
 	private ClienteRepository clienteRepository;
 
+	// CRIAR
+
 	public Cliente criar(String nome, String cpf) {
 		Cliente cliente = new Cliente(nome, cpf);
 		return clienteRepository.save(cliente);
 	}
 
-	public void limpar() {
-		clienteRepository.deleteAll();
-	}
+	// BUSCAR
 
-	public Cliente buscarClientePorNome(String nome) {
-		return clienteRepository.findByNome(nome).orElseThrow(
-				() -> new RuntimeException("Cliente com nome " + nome + " nao encontrado no banco de dados."));
-	}
-
-	public void apagarClientePorNome(Long id) {
-		clienteRepository.deleteById(id);
+	public List<Cliente> buscarTodosClientes() {
+		return clienteRepository.findAll();
 	}
 
 	public Cliente buscarClientePorId(Long id) {
@@ -37,8 +32,19 @@ public class ClienteService {
 				.orElseThrow(() -> new RuntimeException("Cliente com id " + id + " nao encontrado no banco de dados."));
 	}
 
-	public List<Cliente> buscarTodosClientes() {
-		return clienteRepository.findAll();
+	public Cliente buscarClientePorNome(String nome) {
+		return clienteRepository.findByNome(nome).orElseThrow(
+				() -> new RuntimeException("Cliente com nome " + nome + " nao encontrado no banco de dados."));
+	}
+
+	// APAGAR
+
+	public void apagarTodosClientes() {
+		clienteRepository.deleteAll();
+	}
+
+	public void apagarClientePorId(Long id) {
+		clienteRepository.deleteById(id);
 	}
 
 }
