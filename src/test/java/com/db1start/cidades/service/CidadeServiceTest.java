@@ -24,7 +24,7 @@ public class CidadeServiceTest {
 	
 	private void clean() {
 		cidadeService.limpar();
-		estadoService.limpar();
+		estadoService.apagarTodosEstados();
 	}
 
 	@Test

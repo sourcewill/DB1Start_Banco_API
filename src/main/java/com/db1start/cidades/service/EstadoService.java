@@ -13,32 +13,38 @@ public class EstadoService {
 
 	@Autowired
 	private EstadoRepository estadoRepository;
+	
+	// CRIAR
 
 	public Estado criar(String nome) {
 		Estado estado = new Estado(nome);
 		return estadoRepository.save(estado);
 	}
-
-	public void limpar() {
-		estadoRepository.deleteAll();
+	
+	// BUSCAR
+	
+	public List<Estado> buscarTodosEstados() {
+		return estadoRepository.findAll();
 	}
-
-	public Estado buscarEstadoPorNome(String nome) {
-		return estadoRepository.findByNome(nome).orElseThrow(
-				() -> new RuntimeException("Estado com nome " + nome + " nao encontrado no banco de dados."));
-	}
-
-	public void apagarEstadoPorId(Long id) {
-		estadoRepository.deleteById(id);
-	}
-
+	
 	public Estado buscarEstadoPorId(Long id) {
 		return estadoRepository.findById(id)
 				.orElseThrow(() -> new RuntimeException("Estado com id " + id + " nao encontrado no banco de dados."));
 	}
+	
+	public Estado buscarEstadoPorNome(String nome) {
+		return estadoRepository.findByNome(nome).orElseThrow(
+				() -> new RuntimeException("Estado com nome " + nome + " nao encontrado no banco de dados."));
+	}
+	
+	// APAGAR
 
-	public List<Estado> buscarTodosEstados() {
-		return estadoRepository.findAll();
+	public void apagarTodosEstados() {
+		estadoRepository.deleteAll();
+	}
+
+	public void apagarEstadoPorId(Long id) {
+		estadoRepository.deleteById(id);
 	}
 
 }

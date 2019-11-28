@@ -19,6 +19,15 @@ public class EstadoController {
 	@Autowired
 	private EstadoService estadoService;
 
+	// CRIAR
+
+	@PostMapping("/estado")
+	public Estado criarEstado(@RequestBody String nome) {
+		return estadoService.criar(nome);
+	}
+
+	// BUSCAR
+
 	@GetMapping("/estados")
 	public List<Estado> buscarTodosEstados() {
 		return estadoService.buscarTodosEstados();
@@ -29,19 +38,21 @@ public class EstadoController {
 		return estadoService.buscarEstadoPorId(id);
 	}
 
-	@PostMapping("/estado")
-	public Estado criarEstado(@RequestBody String nome) {
-		return estadoService.criar(nome);
+	@GetMapping("/estado/{nome}")
+	public Estado buscarEstadoPorNome(@PathVariable(value = "nome") String nome) {
+		return estadoService.buscarEstadoPorNome(nome);
+	}
+
+	// APAGAR
+
+	@DeleteMapping("/estados")
+	public void apagarTodosEstados() {
+		estadoService.apagarTodosEstados();
 	}
 
 	@DeleteMapping("/estado/{id}")
 	public void apagarEstadoPorId(@PathVariable(value = "id") Long id) {
 		estadoService.apagarEstadoPorId(id);
-	}
-
-	@DeleteMapping("/estados")
-	public void apagarTodosEstados() {
-		estadoService.limpar();
 	}
 
 }

@@ -19,7 +19,7 @@ public class EstadoServiceTest {
 	private EstadoService estadoService;
 	
 	private void clean() {
-		estadoService.limpar();
+		estadoService.apagarTodosEstados();
 	}
 	
 	@Test

@@ -29,7 +29,7 @@ public class AgenciaServiceTest {
 	private void clean() {
 		agenciaService.limpar();
 		cidadeService.limpar();
-		estadoService.limpar();
+		estadoService.apagarTodosEstados();
 	}
 
 	@Test

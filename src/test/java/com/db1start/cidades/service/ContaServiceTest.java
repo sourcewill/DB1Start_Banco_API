@@ -38,7 +38,7 @@ public class ContaServiceTest {
 		contaService.limpar();
 		agenciaService.limpar();
 		cidadeService.limpar();
-		estadoService.limpar();
+		estadoService.apagarTodosEstados();
 	}
 	
 	private Conta criaContaParaTeste() {
