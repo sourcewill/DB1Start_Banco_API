@@ -28,11 +28,11 @@ public class ContaService {
 		contaRepository.deleteAll();
 	}
 	
-	public void apagarConta(Long id) {
+	public void apagarContaPorId(Long id) {
 		contaRepository.deleteById(id);
 	}
 	
-	public Conta buscarPorId(Long id) {
+	public Conta buscarContaPorId(Long id) {
 		return contaRepository.findById(id).orElseThrow(
 				() -> new RuntimeException("Conta com id " + id + " nao encontrada no banco de dados."));
 	}
@@ -63,28 +63,28 @@ public class ContaService {
 	
 	@Transactional
 	public Conta depositar(Long idConta, Double valor) {
-		Conta conta = buscarPorId(idConta);
+		Conta conta = buscarContaPorId(idConta);
 		conta.depositar(valor);
 		return conta; //Devolve a conta atualizada
 	}
 	
 	@Transactional
 	public Conta sacar(Long idConta, Double valor) {
-		Conta conta = buscarPorId(idConta);
+		Conta conta = buscarContaPorId(idConta);
 		conta.sacar(valor);
 		return conta; //Devolve a conta atualizada
 	}
 	
 	@Transactional
 	public Conta ativar(Long idConta) {
-		Conta conta = buscarPorId(idConta);
+		Conta conta = buscarContaPorId(idConta);
 		conta.ativar();
 		return conta; //Devolve a conta atualizada
 	}
 	
 	@Transactional
 	public Conta desativar(Long idConta) {
-		Conta conta = buscarPorId(idConta);
+		Conta conta = buscarContaPorId(idConta);
 		conta.desativar();
 		return conta; //Devolve a conta atualizada
 	}

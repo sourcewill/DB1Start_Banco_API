@@ -34,9 +34,9 @@ public class ClienteServiceTest {
 	public void deveDeletarClientePorId() {
 		Cliente cliente = clienteService.criar("William", "123");
 		Long id = cliente.getId();
-		clienteService.apagarCliente(id);
+		clienteService.apagarClientePorNome(id);
 		try {
-			clienteService.buscarPorId(id);
+			clienteService.buscarClientePorId(id);
 		} catch (Exception e) {
 			assertEquals("Cliente com id " + id + " nao encontrado no banco de dados.", e.getMessage());
 		}

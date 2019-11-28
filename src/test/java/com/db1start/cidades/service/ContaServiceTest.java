@@ -62,9 +62,9 @@ public class ContaServiceTest {
 	public void deveDeletarContaPorId() {
 		Conta conta = criaContaParaTeste();
 		Long id = conta.getId();
-		contaService.apagarConta(id);
+		contaService.apagarContaPorId(id);
 		try {
-			contaService.buscarPorId(id);
+			contaService.buscarContaPorId(id);
 		} catch (Exception e) {
 			assertEquals("Conta com id " + id + " nao encontrada no banco de dados.", e.getMessage());
 		}

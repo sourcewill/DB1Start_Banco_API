@@ -41,9 +41,9 @@ public class CidadeServiceTest {
 		Estado estado = estadoService.criar("Parana");
 		Cidade cidade = cidadeService.criar("Maringa", estado);
 		Long id = cidade.getId();
-		cidadeService.apagarCidade(id);
+		cidadeService.apagarCidadePorId(id);
 		try {
-			cidadeService.buscarPorId(id);
+			cidadeService.buscarCidadePorId(id);
 		} catch (Exception e) {
 			assertEquals("Cidade com id " + id + " nao encontrada no banco de dados.", e.getMessage());
 		}

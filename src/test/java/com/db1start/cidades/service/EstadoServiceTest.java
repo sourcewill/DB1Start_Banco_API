@@ -33,7 +33,7 @@ public class EstadoServiceTest {
 	@Test
 	public void deveBuscarEstadoPorNome() {
 		estadoService.criar("Parana");
-		Estado estado = estadoService.buscarPorNome("Parana");
+		Estado estado = estadoService.buscarEstadoPorNome("Parana");
 		System.out.println("Nome do estado: " + estado.getNome());
 		assertNotNull(estado);
 		clean();
@@ -42,7 +42,7 @@ public class EstadoServiceTest {
 	@Test
 	public void deveLancarExcessaoDeEstadoNaoExiste() {
 		try {
-			estadoService.buscarPorNome("Acre");
+			estadoService.buscarEstadoPorNome("Acre");
 		} catch (Exception e) {
 			assertEquals("Estado com nome Acre nao encontrado no banco de dados.", e.getMessage());
 		}
@@ -52,9 +52,9 @@ public class EstadoServiceTest {
 	public void deveDeletarContaPorId() {
 		Estado estado = estadoService.criar("Parana");
 		Long id = estado.getId();
-		estadoService.apagarEstado(id);
+		estadoService.apagarEstadoPorId(id);
 		try {
-			estadoService.buscarPorId(id);
+			estadoService.buscarEstadoPorId(id);
 		} catch (Exception e) {
 			assertEquals("Estado com id " + id + " nao encontrado no banco de dados.", e.getMessage());
 		}

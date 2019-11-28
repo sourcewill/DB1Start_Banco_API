@@ -48,9 +48,9 @@ public class AgenciaServiceTest {
 		Cidade cidade = cidadeService.criar("Maringa", estado);
 		Agencia agencia = agenciaService.criar("1", cidade, "123");
 		Long id = agencia.getId();
-		agenciaService.apagarAgencia(id);
+		agenciaService.apagarAgenciaPorId(id);
 		try {
-			agenciaService.buscarPorId(id);
+			agenciaService.buscarAgenciaPorId(id);
 		} catch (Exception e) {
 			assertEquals("Agencia com id " + id + " nao encontrada no banco de dados.", e.getMessage());
 		}

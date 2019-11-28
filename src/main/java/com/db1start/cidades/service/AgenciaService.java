@@ -25,16 +25,16 @@ public class AgenciaService {
 		agenciaRepository.deleteAll();
 	}
 	
-	public Agencia buscarPorNumeroAgencia(String numeroAgencia) {
+	public Agencia buscarAgenciaPorNumero(String numeroAgencia) {
 		return agenciaRepository.findByNumeroAgencia(numeroAgencia).orElseThrow(
 				() -> new RuntimeException("Agencia com numero " + numeroAgencia + " nao encontrada no banco de dados."));
 	}
 	
-	public void apagarAgencia(Long id) {
+	public void apagarAgenciaPorId(Long id) {
 		agenciaRepository.deleteById(id);
 	}
 	
-	public Agencia buscarPorId(Long id) {
+	public Agencia buscarAgenciaPorId(Long id) {
 		return agenciaRepository.findById(id).orElseThrow(
 				() -> new RuntimeException("Agencia com id " + id + " nao encontrada no banco de dados."));
 	}

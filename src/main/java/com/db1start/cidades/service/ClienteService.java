@@ -23,16 +23,16 @@ public class ClienteService {
 		clienteRepository.deleteAll();
 	}
 
-	public Cliente buscarPorNome(String nome) {
+	public Cliente buscarClientePorNome(String nome) {
 		return clienteRepository.findByNome(nome).orElseThrow(
 				() -> new RuntimeException("Cliente com nome " + nome + " nao encontrado no banco de dados."));
 	}
 
-	public void apagarCliente(Long id) {
+	public void apagarClientePorNome(Long id) {
 		clienteRepository.deleteById(id);
 	}
 
-	public Cliente buscarPorId(Long id) {
+	public Cliente buscarClientePorId(Long id) {
 		return clienteRepository.findById(id)
 				.orElseThrow(() -> new RuntimeException("Cliente com id " + id + " nao encontrado no banco de dados."));
 	}
