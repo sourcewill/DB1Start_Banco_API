@@ -27,7 +27,7 @@ public class AgenciaServiceTest {
 	private EstadoService estadoService;
 
 	private void clean() {
-		agenciaService.limpar();
+		agenciaService.apagarTodasAgencias();
 		cidadeService.limpar();
 		estadoService.apagarTodosEstados();
 	}

@@ -36,7 +36,7 @@ public class ContaServiceTest {
 	
 	private void clean() {
 		contaService.limpar();
-		agenciaService.limpar();
+		agenciaService.apagarTodasAgencias();
 		cidadeService.limpar();
 		estadoService.apagarTodosEstados();
 	}

@@ -12,45 +12,51 @@ import com.db1start.cidades.repository.AgenciaRepository;
 
 @Service
 public class AgenciaService {
-	
+
 	@Autowired
 	private AgenciaRepository agenciaRepository;
-	
+
+	// CRIAR
+
 	public Agencia criar(String numeroAgencia, Cidade cidade, String numeroBanco) {
 		Agencia agencia = new Agencia(numeroAgencia, cidade, numeroBanco);
 		return agenciaRepository.save(agencia);
 	}
-	
-	public void limpar() {
-		agenciaRepository.deleteAll();
-	}
-	
-	public Agencia buscarAgenciaPorNumero(String numeroAgencia) {
-		return agenciaRepository.findByNumeroAgencia(numeroAgencia).orElseThrow(
-				() -> new RuntimeException("Agencia com numero " + numeroAgencia + " nao encontrada no banco de dados."));
-	}
-	
-	public void apagarAgenciaPorId(Long id) {
-		agenciaRepository.deleteById(id);
-	}
-	
-	public Agencia buscarAgenciaPorId(Long id) {
-		return agenciaRepository.findById(id).orElseThrow(
-				() -> new RuntimeException("Agencia com id " + id + " nao encontrada no banco de dados."));
-	}
-	
-	public List<Agencia> buscarTodasAgencias(){
+
+	// BUSCAR
+
+	public List<Agencia> buscarTodasAgencias() {
 		return agenciaRepository.findAll();
 	}
-	
-	public List<Agencia> buscarTodasAgenciasEmUmaCidade(Cidade cidade){
+
+	public Agencia buscarAgenciaPorId(Long id) {
+		return agenciaRepository.findById(id)
+				.orElseThrow(() -> new RuntimeException("Agencia com id " + id + " nao encontrada no banco de dados."));
+	}
+
+	public Agencia buscarAgenciaPorNumero(String numeroAgencia) {
+		return agenciaRepository.findByNumeroAgencia(numeroAgencia).orElseThrow(() -> new RuntimeException(
+				"Agencia com numero " + numeroAgencia + " nao encontrada no banco de dados."));
+	}
+
+	public List<Agencia> buscarTodasAgenciasEmUmaCidade(Cidade cidade) {
 		List<Agencia> agencias = new ArrayList<>();
-		for(Agencia agencia: buscarTodasAgencias()) {
-			if(agencia.getCidade().equals(cidade)) {
+		for (Agencia agencia : buscarTodasAgencias()) {
+			if (agencia.getCidade().equals(cidade)) {
 				agencias.add(agencia);
 			}
 		}
 		return agencias;
+	}
+
+	// APAGAR
+
+	public void apagarTodasAgencias() {
+		agenciaRepository.deleteAll();
+	}
+
+	public void apagarAgenciaPorId(Long id) {
+		agenciaRepository.deleteById(id);
 	}
 
 }
