@@ -22,8 +22,8 @@ public class EstadoController {
 	// CRIAR
 
 	@PostMapping("/estado")
-	public Estado criarEstado(@RequestBody String nome) {
-		return estadoService.criar(nome);
+	public Estado criarEstado(@RequestBody Estado estado) {
+		return estadoService.criar(estado.getNome());
 	}
 
 	// BUSCAR
@@ -36,11 +36,6 @@ public class EstadoController {
 	@GetMapping("/estado/{id}")
 	public Estado buscarEstadoPorId(@PathVariable(value = "id") Long id) {
 		return estadoService.buscarEstadoPorId(id);
-	}
-
-	@GetMapping("/estado/{nome}")
-	public Estado buscarEstadoPorNome(@PathVariable(value = "nome") String nome) {
-		return estadoService.buscarEstadoPorNome(nome);
 	}
 
 	// APAGAR

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.db1start.cidades.domain.entity.Agencia;
-import com.db1start.cidades.domain.entity.Cidade;
 import com.db1start.cidades.service.AgenciaService;
 
 @RestController
@@ -23,9 +22,8 @@ public class AgenciaController {
 	// CRIAR
 
 	@PostMapping("/agencia")
-	public Agencia criarAgencia(@RequestBody String numeroAgencia, @RequestBody Cidade cidade,
-			@RequestBody String numeroBanco) {
-		return agenciaService.criar(numeroAgencia, cidade, numeroBanco);
+	public Agencia criarAgencia(@RequestBody Agencia agencia) {
+		return agenciaService.criar(agencia.getNumeroAgencia(), agencia.getCidade(), agencia.getNumeroBanco());
 	}
 
 	// BUSCAR
@@ -38,11 +36,6 @@ public class AgenciaController {
 	@GetMapping("/agencia/{id}")
 	public Agencia buscarAgenciaPorId(@PathVariable(value = "id") Long id) {
 		return agenciaService.buscarAgenciaPorId(id);
-	}
-
-	@GetMapping("/agencia/{numeroAgencia}")
-	public Agencia buscarAgenciaPorNumero(@PathVariable(value = "numeroAgencia") String numeroAgencia) {
-		return agenciaService.buscarAgenciaPorNumero(numeroAgencia);
 	}
 
 	// APAGAR

@@ -22,8 +22,8 @@ public class ClienteController {
 	// CRIAR
 
 	@PostMapping("/cliente")
-	public Cliente criarEstado(@RequestBody String nome, @RequestBody String cpf) {
-		return clienteService.criar(nome, cpf);
+	public Cliente criarEstado(@RequestBody Cliente cliente) {
+		return clienteService.criar(cliente.getNome(), cliente.getCpf());
 	}
 
 	// BUSCAR
@@ -33,14 +33,9 @@ public class ClienteController {
 		return clienteService.buscarTodosClientes();
 	}
 
-	@GetMapping("/cliete/{id}")
+	@GetMapping("/cliente/{id}")
 	public Cliente buscarClientePorId(@PathVariable(value = "id") Long id) {
 		return clienteService.buscarClientePorId(id);
-	}
-
-	@GetMapping("/cliente/{nome}")
-	public Cliente buscarClientePorNome(@PathVariable(value = "nome") String nome) {
-		return clienteService.buscarClientePorNome(nome);
 	}
 
 	// APAGAR

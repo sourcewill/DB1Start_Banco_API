@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.db1start.cidades.domain.entity.Agencia;
-import com.db1start.cidades.domain.entity.Cliente;
 import com.db1start.cidades.domain.entity.Conta;
 import com.db1start.cidades.service.ContaService;
 
@@ -23,9 +21,9 @@ public class ContaController {
 
 	// CRIAR
 
-	@PostMapping("/estado")
-	public Conta criarConta(@RequestBody Cliente cliente, @RequestBody Agencia agencia) {
-		return contaService.criar(cliente, agencia);
+	@PostMapping("/conta")
+	public Conta criarConta(@RequestBody Conta conta) {
+		return contaService.criar(conta.getCliente(), conta.getAgencia());
 	}
 
 	// BUSCAR

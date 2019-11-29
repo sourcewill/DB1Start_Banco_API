@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.db1start.cidades.domain.entity.Cidade;
-import com.db1start.cidades.domain.entity.Estado;
 import com.db1start.cidades.service.CidadeService;
 
 @RestController
@@ -23,8 +22,8 @@ public class CidadeController {
 	// CRIAR
 
 	@PostMapping("/cidade")
-	public Cidade criarCidade(@RequestBody String nome, @RequestBody Estado uf) {
-		return cidadeService.criar(nome, uf);
+	public Cidade criarCidade(@RequestBody Cidade cidade) {
+		return cidadeService.criar(cidade.getNome(), cidade.getUf());
 	}
 
 	// BUSCAR
@@ -37,11 +36,6 @@ public class CidadeController {
 	@GetMapping("/cidade/{id}")
 	public Cidade buscarCidadePorId(@PathVariable(value = "id") Long id) {
 		return cidadeService.buscarCidadePorId(id);
-	}
-
-	@GetMapping("/cidade/{nome}")
-	public Cidade buscarCidadePorNome(@PathVariable(value = "nome") String nome) {
-		return cidadeService.buscarCidadePorNome(nome);
 	}
 
 	// APAGAR
