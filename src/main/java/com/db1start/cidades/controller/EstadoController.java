@@ -27,24 +27,24 @@ public class EstadoController {
 
 	@PostMapping("/criar")
 	public EstadoDTO criarEstado(@RequestBody Estado estado) {
-		return EstadoAdapter.estadoParaDTO( estadoService.criar(estado.getNome()) );
+		return EstadoAdapter.estadoParaDTO(estadoService.criar(estado.getNome()));
 	}
 
 	// BUSCAR
 
 	@GetMapping("/buscartodos")
 	public List<EstadoDTO> buscarTodosEstados() {
-		return EstadoAdapter.listaDeEstadoParaDTO( estadoService.buscarTodosEstados() );
+		return EstadoAdapter.listaDeEstadoParaDTO(estadoService.buscarTodosEstados());
 	}
 
 	@GetMapping("/buscarporid/{id}")
 	public EstadoDTO buscarEstadoPorId(@PathVariable(value = "id") Long id) {
-		return EstadoAdapter.estadoParaDTO( estadoService.buscarEstadoPorId(id) );
+		return EstadoAdapter.estadoParaDTO(estadoService.buscarEstadoPorId(id));
 	}
 
 	@GetMapping("/buscarpornome/{nome}")
 	public EstadoDTO buscarEstadoPorNome(@PathVariable(value = "nome") String nome) {
-		return EstadoAdapter.estadoParaDTO( estadoService.buscarEstadoPorNome(nome) );
+		return EstadoAdapter.estadoParaDTO(estadoService.buscarEstadoPorNome(nome));
 	}
 
 	// APAGAR

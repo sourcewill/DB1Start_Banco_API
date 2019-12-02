@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.db1start.cidades.domain.adapter.CidadeAdapter;
+import com.db1start.cidades.domain.dto.CidadeDTO;
 import com.db1start.cidades.domain.entity.Cidade;
 import com.db1start.cidades.service.CidadeService;
 
@@ -24,20 +26,23 @@ public class CidadeController {
 	// CRIAR
 
 	@PostMapping("/cidade")
-	public Cidade criarCidade(@RequestBody Cidade cidade) {
-		return cidadeService.criar(cidade.getNome(), cidade.getUf());
+	public CidadeDTO criarCidade(@RequestBody Cidade cidade) {
+		return CidadeAdapter.cidadeParaDTO(
+				cidadeService.criar(cidade.getNome(), cidade.getUf()));
 	}
 
 	// BUSCAR
 
 	@GetMapping("/cidades")
-	public List<Cidade> buscarTodosCidades() {
-		return cidadeService.buscarTodasCidades();
+	public List<CidadeDTO> buscarTodosCidades() {
+		return CidadeAdapter.listaDeCidadeParaDTO(
+				cidadeService.buscarTodasCidades());
 	}
 
 	@GetMapping("/cidade/{id}")
-	public Cidade buscarCidadePorId(@PathVariable(value = "id") Long id) {
-		return cidadeService.buscarCidadePorId(id);
+	public CidadeDTO buscarCidadePorId(@PathVariable(value = "id") Long id) {
+		return CidadeAdapter.cidadeParaDTO(
+				cidadeService.buscarCidadePorId(id));
 	}
 
 	// APAGAR
