@@ -12,7 +12,7 @@ public class CidadeAdapter {
 		CidadeDTO cidadeDTO = new CidadeDTO();
 		cidadeDTO.setId(cidade.getId());
 		cidadeDTO.setNome(cidade.getNome());
-		cidadeDTO.setUf(cidade.getUf());
+		cidadeDTO.setNomeEstado(cidade.getUf().getNome());
 		return cidadeDTO;
 	}
 	

@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.db1start.cidades.domain.dto.CidadeFormDTO;
 import com.db1start.cidades.domain.entity.Cidade;
 import com.db1start.cidades.domain.entity.Estado;
 import com.db1start.cidades.repository.CidadeRepository;
@@ -14,9 +15,18 @@ import com.db1start.cidades.repository.CidadeRepository;
 public class CidadeService {
 
 	@Autowired
+	private EstadoService estadoService;
+
+	@Autowired
 	private CidadeRepository cidadeRepository;
 
 	// CRIAR
+
+	public Cidade criar(CidadeFormDTO cidadeForm) {
+		Estado uf = estadoService.buscarEstadoPorId(cidadeForm.getIdUf());
+		Cidade cidade = new Cidade(cidadeForm.getNome(), uf);
+		return cidadeRepository.save(cidade);
+	}
 
 	public Cidade criar(String nome, Estado uf) {
 		Cidade cidade = new Cidade(nome, uf);

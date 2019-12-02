@@ -1,12 +1,10 @@
 package com.db1start.cidades.domain.dto;
 
-import com.db1start.cidades.domain.entity.Estado;
-
 public class CidadeDTO {
 
 	private Long id;
 	private String nome;
-	private Estado uf;
+	private String nomeEstado;
 
 	public Long getId() {
 		return id;
@@ -24,12 +22,12 @@ public class CidadeDTO {
 		this.nome = nome;
 	}
 
-	public Estado getUf() {
-		return uf;
+	public String getNomeEstado() {
+		return nomeEstado;
 	}
 
-	public void setUf(Estado uf) {
-		this.uf = uf;
+	public void setNomeEstado(String nomeEstado) {
+		this.nomeEstado = nomeEstado;
 	}
 
 }

@@ -24,7 +24,7 @@ public class Estado {
 	@Column(name = "nome", length = 60)
 	private String nome;
 
-	@OneToMany(mappedBy = "uf", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "uf", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Cidade> cidades;
 
 	public Estado(String nome) {

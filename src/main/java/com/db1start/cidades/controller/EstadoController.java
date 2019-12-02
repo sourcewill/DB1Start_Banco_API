@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.db1start.cidades.domain.adapter.EstadoAdapter;
 import com.db1start.cidades.domain.dto.EstadoDTO;
-import com.db1start.cidades.domain.entity.Estado;
+import com.db1start.cidades.domain.dto.EstadoFormDTO;
 import com.db1start.cidades.service.EstadoService;
 
 @RestController
@@ -26,8 +26,8 @@ public class EstadoController {
 	// CRIAR
 
 	@PostMapping("/criar")
-	public EstadoDTO criarEstado(@RequestBody Estado estado) {
-		return EstadoAdapter.estadoParaDTO(estadoService.criar(estado.getNome()));
+	public EstadoDTO criarEstado(@RequestBody EstadoFormDTO estadoForm) {
+		return EstadoAdapter.estadoParaDTO(estadoService.criar(estadoForm.getNome()));
 	}
 
 	// BUSCAR
