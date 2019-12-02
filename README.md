@@ -1,6 +1,6 @@
-# DB1 Start: Spring e JPA
+# DB1 Start: Banco API
 - Feito Por: William Rodrigues
-- Exercíco sobre uso do fraework Sprring Tools Suite 4 no DB1 Start 2019.
+- Exercíco sobre uso do fraework Spring Tools Suite, JPA e API Rest no DB1 Start 2019.
 
 ## Atividades desnvolvidas no exercício
 
