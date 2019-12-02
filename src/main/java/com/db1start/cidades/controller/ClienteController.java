@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.db1start.cidades.domain.adapter.ClienteAdapter;
+import com.db1start.cidades.domain.dto.ClienteDTO;
 import com.db1start.cidades.domain.entity.Cliente;
 import com.db1start.cidades.service.ClienteService;
 
@@ -24,20 +26,20 @@ public class ClienteController {
 	// CRIAR
 
 	@PostMapping("/cliente")
-	public Cliente criarEstado(@RequestBody Cliente cliente) {
-		return clienteService.criar(cliente.getNome(), cliente.getCpf());
+	public ClienteDTO criarEstado(@RequestBody Cliente cliente) {
+		return ClienteAdapter.clienteParaDTO(clienteService.criar(cliente.getNome(), cliente.getCpf()));
 	}
 
 	// BUSCAR
 
 	@GetMapping("/clientes")
-	public List<Cliente> buscarTodosClientes() {
-		return clienteService.buscarTodosClientes();
+	public List<ClienteDTO> buscarTodosClientes() {
+		return ClienteAdapter.listaDeClienteParaDTO(clienteService.buscarTodosClientes());
 	}
 
 	@GetMapping("/cliente/{id}")
-	public Cliente buscarClientePorId(@PathVariable(value = "id") Long id) {
-		return clienteService.buscarClientePorId(id);
+	public ClienteDTO buscarClientePorId(@PathVariable(value = "id") Long id) {
+		return ClienteAdapter.clienteParaDTO(clienteService.buscarClientePorId(id));
 	}
 
 	// APAGAR

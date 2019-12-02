@@ -27,22 +27,19 @@ public class CidadeController {
 
 	@PostMapping("/cidade")
 	public CidadeDTO criarCidade(@RequestBody Cidade cidade) {
-		return CidadeAdapter.cidadeParaDTO(
-				cidadeService.criar(cidade.getNome(), cidade.getUf()));
+		return CidadeAdapter.cidadeParaDTO(cidadeService.criar(cidade.getNome(), cidade.getUf()));
 	}
 
 	// BUSCAR
 
 	@GetMapping("/cidades")
 	public List<CidadeDTO> buscarTodosCidades() {
-		return CidadeAdapter.listaDeCidadeParaDTO(
-				cidadeService.buscarTodasCidades());
+		return CidadeAdapter.listaDeCidadeParaDTO(cidadeService.buscarTodasCidades());
 	}
 
 	@GetMapping("/cidade/{id}")
 	public CidadeDTO buscarCidadePorId(@PathVariable(value = "id") Long id) {
-		return CidadeAdapter.cidadeParaDTO(
-				cidadeService.buscarCidadePorId(id));
+		return CidadeAdapter.cidadeParaDTO(cidadeService.buscarCidadePorId(id));
 	}
 
 	// APAGAR

@@ -35,14 +35,12 @@ public class AgenciaController {
 
 	@GetMapping("/agencias")
 	public List<AgenciaDTO> buscarTodosAgencias() {
-		return AgenciaAdapter.listaDeAgenciasParaDTO(
-				agenciaService.buscarTodasAgencias() );
+		return AgenciaAdapter.listaDeAgenciasParaDTO(agenciaService.buscarTodasAgencias());
 	}
 
 	@GetMapping("/agencia/{id}")
 	public AgenciaDTO buscarAgenciaPorId(@PathVariable(value = "id") Long id) {
-		return AgenciaAdapter.agenciaParaDTO(
-				agenciaService.buscarAgenciaPorId(id));
+		return AgenciaAdapter.agenciaParaDTO(agenciaService.buscarAgenciaPorId(id));
 	}
 
 	// APAGAR
