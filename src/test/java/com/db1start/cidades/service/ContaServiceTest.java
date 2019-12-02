@@ -79,6 +79,7 @@ public class ContaServiceTest {
 		Double valor = 99.5;
 		conta = contaService.depositar(id, valor);
 		assertEquals(valor, conta.getSaldo());
+		assertEquals(1, conta.getHistoricoDeOperacoes().size());
 		clean();
 	}
 	
@@ -95,6 +96,7 @@ public class ContaServiceTest {
 		
 		Double saldoFinal = saldoInicial - valorSacado;
 		assertEquals(saldoFinal, conta.getSaldo());
+		assertEquals(2, conta.getHistoricoDeOperacoes().size());
 		clean();
 	}
 

@@ -1,12 +1,18 @@
 package com.db1start.cidades.domain.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -27,6 +33,9 @@ public class Conta {
 	@ManyToOne
 	@JoinColumn
 	private Agencia agencia;
+	
+	@OneToMany(mappedBy = "conta", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<Operacao> historicoDeOperacoes;
 
 	@Column(name = "status")
 	private StatusConta status;
@@ -43,6 +52,7 @@ public class Conta {
 		this.saldo = 0.0;
 		this.cliente = cliente;
 		this.agencia = agencia;
+		this.historicoDeOperacoes = new ArrayList<>();
 		this.status = StatusConta.ATIVA;
 	}
 
@@ -70,6 +80,10 @@ public class Conta {
 		return status;
 	}
 
+	public List<Operacao> getHistoricoDeOperacoes() {
+		return historicoDeOperacoes;
+	}
+
 	public void depositar(Double valor) {
 
 		if (valor == null) {
@@ -79,6 +93,8 @@ public class Conta {
 			throw new RuntimeException("Valor deve ser maior que zero.");
 		}
 
+		Operacao operacao = new Operacao(this, TipoOperacao.DEPOSITO, valor);
+		this.historicoDeOperacoes.add(operacao);
 		this.saldo += valor;
 	}
 
@@ -94,6 +110,8 @@ public class Conta {
 			throw new RuntimeException("Valor é maior do que o saldo atual.");
 		}
 
+		Operacao operacao = new Operacao(this, TipoOperacao.SAQUE, valor);
+		this.historicoDeOperacoes.add(operacao);
 		this.saldo -= valor;
 	}
 
