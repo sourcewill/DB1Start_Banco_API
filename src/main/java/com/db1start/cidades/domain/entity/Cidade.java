@@ -35,6 +35,7 @@ public class Cidade {
 
 		this.nome = nome;
 		this.uf = uf;
+		this.uf.getCidades().add(this);
 	}
 
 	public Cidade() {

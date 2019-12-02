@@ -32,6 +32,7 @@ public class CidadeServiceTest {
 		Estado estado = estadoService.criar("Parana");
 		Cidade cidade = cidadeService.criar("Maringa", estado);
 		assertNotNull(cidade);
+		assertEquals(1, cidade.getUf().getCidades().size());
 		System.out.println("Cidade: " + cidade.getNome() + " | Estado: " + cidade.getUf().getNome());
 		clean();
 	}

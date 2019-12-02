@@ -8,12 +8,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.db1start.cidades.domain.adapter.EstadoAdapter;
+import com.db1start.cidades.domain.dto.EstadoDTO;
 import com.db1start.cidades.domain.entity.Estado;
 import com.db1start.cidades.service.EstadoService;
 
 @RestController
+@RequestMapping("/api/estado")
 public class EstadoController {
 
 	@Autowired
@@ -21,31 +25,36 @@ public class EstadoController {
 
 	// CRIAR
 
-	@PostMapping("/estado")
-	public Estado criarEstado(@RequestBody Estado estado) {
-		return estadoService.criar(estado.getNome());
+	@PostMapping("/criar")
+	public EstadoDTO criarEstado(@RequestBody Estado estado) {
+		return EstadoAdapter.estadoParaDTO( estadoService.criar(estado.getNome()) );
 	}
 
 	// BUSCAR
 
-	@GetMapping("/estados")
-	public List<Estado> buscarTodosEstados() {
-		return estadoService.buscarTodosEstados();
+	@GetMapping("/buscartodos")
+	public List<EstadoDTO> buscarTodosEstados() {
+		return EstadoAdapter.listaDeEstadoParaDTO( estadoService.buscarTodosEstados() );
 	}
 
-	@GetMapping("/estado/{id}")
-	public Estado buscarEstadoPorId(@PathVariable(value = "id") Long id) {
-		return estadoService.buscarEstadoPorId(id);
+	@GetMapping("/buscarporid/{id}")
+	public EstadoDTO buscarEstadoPorId(@PathVariable(value = "id") Long id) {
+		return EstadoAdapter.estadoParaDTO( estadoService.buscarEstadoPorId(id) );
+	}
+
+	@GetMapping("/buscarpornome/{nome}")
+	public EstadoDTO buscarEstadoPorNome(@PathVariable(value = "nome") String nome) {
+		return EstadoAdapter.estadoParaDTO( estadoService.buscarEstadoPorNome(nome) );
 	}
 
 	// APAGAR
 
-	@DeleteMapping("/estados")
+	@DeleteMapping("/apagartodos")
 	public void apagarTodosEstados() {
 		estadoService.apagarTodosEstados();
 	}
 
-	@DeleteMapping("/estado/{id}")
+	@DeleteMapping("/apagarporid/{id}")
 	public void apagarEstadoPorId(@PathVariable(value = "id") Long id) {
 		estadoService.apagarEstadoPorId(id);
 	}
