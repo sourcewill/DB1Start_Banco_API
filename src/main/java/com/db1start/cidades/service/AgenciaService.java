@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.db1start.cidades.domain.dto.AgenciaFormDTO;
 import com.db1start.cidades.domain.entity.Agencia;
 import com.db1start.cidades.domain.entity.Cidade;
 import com.db1start.cidades.repository.AgenciaRepository;
@@ -15,8 +16,17 @@ public class AgenciaService {
 
 	@Autowired
 	private AgenciaRepository agenciaRepository;
+	
+	@Autowired
+	private CidadeService cidadeService;
 
 	// CRIAR
+	
+	public Agencia criar(AgenciaFormDTO agenciaForm) {
+		Cidade cidade = cidadeService.buscarCidadePorId(agenciaForm.getIdCidade());
+		Agencia agencia = new Agencia(agenciaForm.getNumeroAgencia(), cidade, agenciaForm.getNumeroBanco());
+		return agenciaRepository.save(agencia);
+	}
 
 	public Agencia criar(String numeroAgencia, Cidade cidade, String numeroBanco) {
 		Agencia agencia = new Agencia(numeroAgencia, cidade, numeroBanco);

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.db1start.cidades.domain.adapter.AgenciaAdapter;
 import com.db1start.cidades.domain.dto.AgenciaDTO;
-import com.db1start.cidades.domain.entity.Agencia;
+import com.db1start.cidades.domain.dto.AgenciaFormDTO;
 import com.db1start.cidades.service.AgenciaService;
 
 @RestController
@@ -26,9 +26,9 @@ public class AgenciaController {
 	// CRIAR
 
 	@PostMapping("/criar")
-	public AgenciaDTO criarAgencia(@RequestBody Agencia agencia) {
+	public AgenciaDTO criarAgencia(@RequestBody AgenciaFormDTO agenciaForm) {
 		return AgenciaAdapter.agenciaParaDTO(
-				agenciaService.criar(agencia.getNumeroAgencia(), agencia.getCidade(), agencia.getNumeroBanco()));
+				agenciaService.criar(agenciaForm));
 	}
 
 	// BUSCAR

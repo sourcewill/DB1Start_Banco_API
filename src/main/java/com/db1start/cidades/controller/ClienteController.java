@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.db1start.cidades.domain.adapter.ClienteAdapter;
 import com.db1start.cidades.domain.dto.ClienteDTO;
-import com.db1start.cidades.domain.entity.Cliente;
+import com.db1start.cidades.domain.dto.ClienteFormDTO;
 import com.db1start.cidades.service.ClienteService;
 
 @RestController
@@ -26,8 +26,8 @@ public class ClienteController {
 	// CRIAR
 
 	@PostMapping("/criar")
-	public ClienteDTO criarEstado(@RequestBody Cliente cliente) {
-		return ClienteAdapter.clienteParaDTO(clienteService.criar(cliente.getNome(), cliente.getCpf()));
+	public ClienteDTO criarEstado(@RequestBody ClienteFormDTO clienteForm) {
+		return ClienteAdapter.clienteParaDTO(clienteService.criar(clienteForm.getNome(), clienteForm.getCpf()));
 	}
 
 	// BUSCAR

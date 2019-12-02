@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.db1start.cidades.domain.adapter.CidadeAdapter;
 import com.db1start.cidades.domain.dto.CidadeDTO;
 import com.db1start.cidades.domain.dto.CidadeFormDTO;
-import com.db1start.cidades.domain.entity.Cidade;
 import com.db1start.cidades.service.CidadeService;
 
 @RestController
@@ -28,8 +27,7 @@ public class CidadeController {
 
 	@PostMapping("/criar")
 	public CidadeDTO criarCidade(@RequestBody CidadeFormDTO cidadeForm) {
-		Cidade cidade = cidadeService.criar(cidadeForm);
-		return CidadeAdapter.cidadeParaDTO(cidadeService.criar(cidade.getNome(), cidade.getUf()));
+		return CidadeAdapter.cidadeParaDTO(cidadeService.criar(cidadeForm));
 	}
 
 	// BUSCAR
