@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.db1start.cidades.domain.adapter.AgenciaAdapter;
+import com.db1start.cidades.domain.dto.AgenciaDTO;
 import com.db1start.cidades.domain.entity.Agencia;
 import com.db1start.cidades.service.AgenciaService;
 
@@ -24,20 +26,23 @@ public class AgenciaController {
 	// CRIAR
 
 	@PostMapping("/agencia")
-	public Agencia criarAgencia(@RequestBody Agencia agencia) {
-		return agenciaService.criar(agencia.getNumeroAgencia(), agencia.getCidade(), agencia.getNumeroBanco());
+	public AgenciaDTO criarAgencia(@RequestBody Agencia agencia) {
+		return AgenciaAdapter.agenciaParaDTO(
+				agenciaService.criar(agencia.getNumeroAgencia(), agencia.getCidade(), agencia.getNumeroBanco()));
 	}
 
 	// BUSCAR
 
 	@GetMapping("/agencias")
-	public List<Agencia> buscarTodosAgencias() {
-		return agenciaService.buscarTodasAgencias();
+	public List<AgenciaDTO> buscarTodosAgencias() {
+		return AgenciaAdapter.listaDeAgenciasParaDTO(
+				agenciaService.buscarTodasAgencias() );
 	}
 
 	@GetMapping("/agencia/{id}")
-	public Agencia buscarAgenciaPorId(@PathVariable(value = "id") Long id) {
-		return agenciaService.buscarAgenciaPorId(id);
+	public AgenciaDTO buscarAgenciaPorId(@PathVariable(value = "id") Long id) {
+		return AgenciaAdapter.agenciaParaDTO(
+				agenciaService.buscarAgenciaPorId(id));
 	}
 
 	// APAGAR
