@@ -17,7 +17,7 @@ import com.db1start.cidades.domain.entity.Conta;
 import com.db1start.cidades.service.ContaService;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/conta")
 public class ContaController {
 
 	@Autowired
@@ -25,41 +25,41 @@ public class ContaController {
 
 	// CRIAR
 
-	@PostMapping("/conta")
+	@PostMapping("/criar")
 	public ContaDTO criarConta(@RequestBody Conta conta) {
 		return ContaAdapter.contaParaDTO(contaService.criar(conta.getCliente(), conta.getAgencia()));
 	}
 
 	// BUSCAR
 
-	@GetMapping("/contas")
+	@GetMapping("/buscartodas")
 	public List<ContaDTO> buscarTodasContas() {
 		return ContaAdapter.listaDeContasParaDTO(contaService.buscaTodasContas());
 	}
 
-	@GetMapping("/contas/ativas")
+	@GetMapping("/ativas")
 	public List<ContaDTO> buscarTodasContasAtivas() {
 		return ContaAdapter.listaDeContasParaDTO(contaService.buscaTodasContasAtivas());
 	}
 
-	@GetMapping("/contas/inativas")
+	@GetMapping("/inativas")
 	public List<ContaDTO> buscarTodasContasInativas() {
 		return ContaAdapter.listaDeContasParaDTO(contaService.buscaTodasContasInativas());
 	}
 
-	@GetMapping("/conta/{id}")
+	@GetMapping("/buscarporid/{id}")
 	public ContaDTO buscarContaPorId(@PathVariable(value = "id") Long id) {
 		return ContaAdapter.contaParaDTO(contaService.buscarContaPorId(id));
 	}
 
 	// APAGAR
 
-	@DeleteMapping("/contas")
+	@DeleteMapping("/apagartodas")
 	public void apagarTodasContas() {
 		contaService.apagarTodasContas();
 	}
 
-	@DeleteMapping("/conta/{id}")
+	@DeleteMapping("/apagarporid/{id}")
 	public void apagarContaPorId(@PathVariable(value = "id") Long id) {
 		contaService.apagarContaPorId(id);
 	}

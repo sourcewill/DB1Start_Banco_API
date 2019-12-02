@@ -17,7 +17,7 @@ import com.db1start.cidades.domain.entity.Agencia;
 import com.db1start.cidades.service.AgenciaService;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/agencia")
 public class AgenciaController {
 
 	@Autowired
@@ -25,7 +25,7 @@ public class AgenciaController {
 
 	// CRIAR
 
-	@PostMapping("/agencia")
+	@PostMapping("/criar")
 	public AgenciaDTO criarAgencia(@RequestBody Agencia agencia) {
 		return AgenciaAdapter.agenciaParaDTO(
 				agenciaService.criar(agencia.getNumeroAgencia(), agencia.getCidade(), agencia.getNumeroBanco()));
@@ -33,24 +33,24 @@ public class AgenciaController {
 
 	// BUSCAR
 
-	@GetMapping("/agencias")
+	@GetMapping("/buscartodas")
 	public List<AgenciaDTO> buscarTodosAgencias() {
 		return AgenciaAdapter.listaDeAgenciasParaDTO(agenciaService.buscarTodasAgencias());
 	}
 
-	@GetMapping("/agencia/{id}")
+	@GetMapping("/buscarporid/{id}")
 	public AgenciaDTO buscarAgenciaPorId(@PathVariable(value = "id") Long id) {
 		return AgenciaAdapter.agenciaParaDTO(agenciaService.buscarAgenciaPorId(id));
 	}
 
 	// APAGAR
 
-	@DeleteMapping("/agencias")
+	@DeleteMapping("/apagartodas")
 	public void apagarTodasAgencias() {
 		agenciaService.apagarTodasAgencias();
 	}
 
-	@DeleteMapping("/agencia/{id}")
+	@DeleteMapping("/apagarporid/{id}")
 	public void apagarAgenciaPorId(@PathVariable(value = "id") Long id) {
 		agenciaService.apagarAgenciaPorId(id);
 	}

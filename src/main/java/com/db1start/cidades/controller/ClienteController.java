@@ -17,7 +17,7 @@ import com.db1start.cidades.domain.entity.Cliente;
 import com.db1start.cidades.service.ClienteService;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/cliente")
 public class ClienteController {
 
 	@Autowired
@@ -25,31 +25,31 @@ public class ClienteController {
 
 	// CRIAR
 
-	@PostMapping("/cliente")
+	@PostMapping("/criar")
 	public ClienteDTO criarEstado(@RequestBody Cliente cliente) {
 		return ClienteAdapter.clienteParaDTO(clienteService.criar(cliente.getNome(), cliente.getCpf()));
 	}
 
 	// BUSCAR
 
-	@GetMapping("/clientes")
+	@GetMapping("/buscartodos")
 	public List<ClienteDTO> buscarTodosClientes() {
 		return ClienteAdapter.listaDeClienteParaDTO(clienteService.buscarTodosClientes());
 	}
 
-	@GetMapping("/cliente/{id}")
+	@GetMapping("/buscarporid/{id}")
 	public ClienteDTO buscarClientePorId(@PathVariable(value = "id") Long id) {
 		return ClienteAdapter.clienteParaDTO(clienteService.buscarClientePorId(id));
 	}
 
 	// APAGAR
 
-	@DeleteMapping("/clientes")
+	@DeleteMapping("/apagartodos")
 	public void apagarTodosClientes() {
 		clienteService.apagarTodosClientes();
 	}
 
-	@DeleteMapping("/cliente/{id}")
+	@DeleteMapping("/apagarporid/{id}")
 	public void apagarClientePorId(@PathVariable(value = "id") Long id) {
 		clienteService.apagarClientePorId(id);
 	}

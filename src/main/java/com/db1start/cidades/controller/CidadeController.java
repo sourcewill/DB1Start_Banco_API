@@ -17,7 +17,7 @@ import com.db1start.cidades.domain.entity.Cidade;
 import com.db1start.cidades.service.CidadeService;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/cidade")
 public class CidadeController {
 
 	@Autowired
@@ -25,31 +25,31 @@ public class CidadeController {
 
 	// CRIAR
 
-	@PostMapping("/cidade")
+	@PostMapping("/criar")
 	public CidadeDTO criarCidade(@RequestBody Cidade cidade) {
 		return CidadeAdapter.cidadeParaDTO(cidadeService.criar(cidade.getNome(), cidade.getUf()));
 	}
 
 	// BUSCAR
 
-	@GetMapping("/cidades")
+	@GetMapping("/buscartodas")
 	public List<CidadeDTO> buscarTodosCidades() {
 		return CidadeAdapter.listaDeCidadeParaDTO(cidadeService.buscarTodasCidades());
 	}
 
-	@GetMapping("/cidade/{id}")
+	@GetMapping("/buscarporid/{id}")
 	public CidadeDTO buscarCidadePorId(@PathVariable(value = "id") Long id) {
 		return CidadeAdapter.cidadeParaDTO(cidadeService.buscarCidadePorId(id));
 	}
 
 	// APAGAR
 
-	@DeleteMapping("/cidades")
+	@DeleteMapping("/apagartodas")
 	public void apagarTodasCidades() {
 		cidadeService.apagarTodasCidades();
 	}
 
-	@DeleteMapping("/cidade/{id}")
+	@DeleteMapping("/apagarporid/{id}")
 	public void apagarCidadePorId(@PathVariable(value = "id") Long id) {
 		cidadeService.apagarCidadePorId(id);
 	}
