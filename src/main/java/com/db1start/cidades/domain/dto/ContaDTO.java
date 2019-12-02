@@ -2,9 +2,7 @@ package com.db1start.cidades.domain.dto;
 
 import java.util.List;
 
-import com.db1start.cidades.domain.entity.Agencia;
 import com.db1start.cidades.domain.entity.Cliente;
-import com.db1start.cidades.domain.entity.Operacao;
 import com.db1start.cidades.domain.entity.StatusConta;
 
 public class ContaDTO {
@@ -12,8 +10,8 @@ public class ContaDTO {
 	private Long id;
 	private Double saldo;
 	private Cliente cliente;
-	private Agencia agencia;
-	private List<Operacao> historicoDeOperacoes;
+	private AgenciaDTO agenciaDTO;
+	private List<OperacaoDTO> historicoDeOperacoesDTO;
 	private StatusConta status;
 
 	public Long getId() {
@@ -40,20 +38,20 @@ public class ContaDTO {
 		this.cliente = cliente;
 	}
 
-	public Agencia getAgencia() {
-		return agencia;
+	public AgenciaDTO getAgenciaDTO() {
+		return agenciaDTO;
 	}
 
-	public void setAgencia(Agencia agencia) {
-		this.agencia = agencia;
+	public void setAgenciaDTO(AgenciaDTO agenciaDTO) {
+		this.agenciaDTO = agenciaDTO;
 	}
 
-	public List<Operacao> getHistoricoDeOperacoes() {
-		return historicoDeOperacoes;
+	public List<OperacaoDTO> getHistoricoDeOperacoesDTO() {
+		return historicoDeOperacoesDTO;
 	}
 
-	public void setHistoricoDeOperacoes(List<Operacao> historicoDeOperacoes) {
-		this.historicoDeOperacoes = historicoDeOperacoes;
+	public void setHistoricoDeOperacoesDTO(List<OperacaoDTO> historicoDeOperacoesDTO) {
+		this.historicoDeOperacoesDTO = historicoDeOperacoesDTO;
 	}
 
 	public StatusConta getStatus() {

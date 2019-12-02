@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.db1start.cidades.domain.dto.ContaFormDTO;
 import com.db1start.cidades.domain.entity.Agencia;
 import com.db1start.cidades.domain.entity.Cliente;
 import com.db1start.cidades.domain.entity.Conta;
@@ -18,7 +19,20 @@ public class ContaService {
 	@Autowired
 	private ContaRepository contaRepository;
 
+	@Autowired
+	private ClienteService clienteService;
+
+	@Autowired
+	private AgenciaService agenciaService;
+
 	// CRIAR
+
+	public Conta criar(ContaFormDTO contaForm) {
+		Cliente cliente = clienteService.buscarClientePorId(contaForm.getIdCliente());
+		Agencia agencia = agenciaService.buscarAgenciaPorId(contaForm.getIdAgencia());
+		Conta conta = new Conta(cliente, agencia);
+		return contaRepository.save(conta);
+	}
 
 	public Conta criar(Cliente cliente, Agencia agencia) {
 		Conta conta = new Conta(cliente, agencia);

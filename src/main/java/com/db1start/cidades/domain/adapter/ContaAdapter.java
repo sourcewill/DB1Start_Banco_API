@@ -3,7 +3,9 @@ package com.db1start.cidades.domain.adapter;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.db1start.cidades.domain.dto.AgenciaDTO;
 import com.db1start.cidades.domain.dto.ContaDTO;
+import com.db1start.cidades.domain.dto.OperacaoDTO;
 import com.db1start.cidades.domain.entity.Conta;
 
 public class ContaAdapter {
@@ -11,9 +13,11 @@ public class ContaAdapter {
 	public static ContaDTO contaParaDTO(Conta conta) {
 		ContaDTO contaDTO = new ContaDTO();
 		contaDTO.setId(conta.getId());
-		contaDTO.setAgencia(conta.getAgencia());
+		AgenciaDTO agenciaDTO = AgenciaAdapter.agenciaParaDTO(conta.getAgencia());
+		contaDTO.setAgenciaDTO(agenciaDTO);
 		contaDTO.setCliente(conta.getCliente());
-		contaDTO.setHistoricoDeOperacoes(conta.getHistoricoDeOperacoes());
+		List<OperacaoDTO> historicoDeOperacoesDTO = OperacaoAdapter.listaDeOperacoesParaDTO(conta.getHistoricoDeOperacoes());
+		contaDTO.setHistoricoDeOperacoesDTO(historicoDeOperacoesDTO);
 		contaDTO.setSaldo(conta.getSaldo());
 		contaDTO.setStatus(conta.getStatus());
 		return contaDTO;

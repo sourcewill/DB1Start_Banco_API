@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.db1start.cidades.domain.adapter.ContaAdapter;
 import com.db1start.cidades.domain.dto.ContaDTO;
-import com.db1start.cidades.domain.entity.Conta;
+import com.db1start.cidades.domain.dto.ContaFormDTO;
 import com.db1start.cidades.service.ContaService;
 
 @RestController
@@ -26,8 +26,8 @@ public class ContaController {
 	// CRIAR
 
 	@PostMapping("/criar")
-	public ContaDTO criarConta(@RequestBody Conta conta) {
-		return ContaAdapter.contaParaDTO(contaService.criar(conta.getCliente(), conta.getAgencia()));
+	public ContaDTO criarConta(@RequestBody ContaFormDTO contaForm) {
+		return ContaAdapter.contaParaDTO(contaService.criar(contaForm));
 	}
 
 	// BUSCAR
