@@ -4,7 +4,7 @@ public class CidadeDTO {
 
 	private Long id;
 	private String nome;
-	private String nomeEstado;
+	private EstadoDTO estadoDTO;
 
 	public Long getId() {
 		return id;
@@ -22,12 +22,12 @@ public class CidadeDTO {
 		this.nome = nome;
 	}
 
-	public String getNomeEstado() {
-		return nomeEstado;
+	public EstadoDTO getEstadoDTO() {
+		return estadoDTO;
 	}
 
-	public void setNomeEstado(String nomeEstado) {
-		this.nomeEstado = nomeEstado;
+	public void setEstadoDTO(EstadoDTO estadoDTO) {
+		this.estadoDTO = estadoDTO;
 	}
 
 }
