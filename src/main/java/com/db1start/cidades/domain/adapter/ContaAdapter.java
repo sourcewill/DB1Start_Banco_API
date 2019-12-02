@@ -26,8 +26,7 @@ public class ContaAdapter {
 	public static List<ContaDTO> listaDeContasParaDTO(List<Conta> contas) {
 		List<ContaDTO> listaDeContasDTO = new ArrayList<>();
 		for (Conta conta : contas) {
-			ContaDTO contaDTO = contaParaDTO(conta);
-			listaDeContasDTO.add(contaDTO);
+			listaDeContasDTO.add(contaParaDTO(conta));
 		}
 		return listaDeContasDTO;
 	}

@@ -21,8 +21,7 @@ public class CidadeAdapter {
 	public static List<CidadeDTO> listaDeCidadeParaDTO(List<Cidade> cidades){
 		List<CidadeDTO> listaDeCidadesDTO = new ArrayList<>();
 		for(Cidade cidade : cidades) {
-			CidadeDTO cidadeDTO = cidadeParaDTO(cidade);
-			listaDeCidadesDTO.add(cidadeDTO);
+			listaDeCidadesDTO.add(cidadeParaDTO(cidade));
 		}
 		return listaDeCidadesDTO;
 	}

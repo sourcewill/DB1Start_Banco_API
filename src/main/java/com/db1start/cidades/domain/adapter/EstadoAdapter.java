@@ -18,8 +18,7 @@ public class EstadoAdapter {
 	public static List<EstadoDTO> listaDeEstadoParaDTO(List<Estado> estados){
 		List<EstadoDTO> listaDeEstadosDTO = new ArrayList<>();
 		for(Estado estado : estados) {
-			EstadoDTO estadoDTO = estadoParaDTO(estado);
-			listaDeEstadosDTO.add(estadoDTO);
+			listaDeEstadosDTO.add(estadoParaDTO(estado));
 		}
 		return listaDeEstadosDTO;
 	}

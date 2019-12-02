@@ -19,8 +19,7 @@ public class ClienteAdapter {
 	public static List<ClienteDTO> listaDeClienteParaDTO(List<Cliente> clientes) {
 		List<ClienteDTO> listaDeClientesDTO = new ArrayList<>();
 		for (Cliente cliente : clientes) {
-			ClienteDTO cclienteDTO = clienteParaDTO(cliente);
-			listaDeClientesDTO.add(cclienteDTO);
+			listaDeClientesDTO.add(clienteParaDTO(cliente));
 		}
 		return listaDeClientesDTO;
 	}

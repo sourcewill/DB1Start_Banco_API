@@ -23,8 +23,7 @@ public class AgenciaAdapter {
 	public static List<AgenciaDTO> listaDeAgenciasParaDTO(List<Agencia> agencias){
 		List<AgenciaDTO> listaDeAgenciasDTO = new ArrayList<>();
 		for(Agencia agencia : agencias) {
-			AgenciaDTO agenciaDTO = agenciaParaDTO(agencia);
-			listaDeAgenciasDTO.add(agenciaDTO);
+			listaDeAgenciasDTO.add(agenciaParaDTO(agencia));
 		}
 		return listaDeAgenciasDTO;
 	}
