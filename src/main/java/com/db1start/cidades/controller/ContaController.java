@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.db1start.cidades.domain.adapter.ContaAdapter;
+import com.db1start.cidades.domain.dto.ContaDTO;
 import com.db1start.cidades.domain.entity.Conta;
 import com.db1start.cidades.service.ContaService;
 
@@ -24,30 +26,30 @@ public class ContaController {
 	// CRIAR
 
 	@PostMapping("/conta")
-	public Conta criarConta(@RequestBody Conta conta) {
-		return contaService.criar(conta.getCliente(), conta.getAgencia());
+	public ContaDTO criarConta(@RequestBody Conta conta) {
+		return ContaAdapter.contaParaDTO(contaService.criar(conta.getCliente(), conta.getAgencia()));
 	}
 
 	// BUSCAR
 
 	@GetMapping("/contas")
-	public List<Conta> buscarTodasContas() {
-		return contaService.buscaTodasContas();
+	public List<ContaDTO> buscarTodasContas() {
+		return ContaAdapter.listaDeContasParaDTO(contaService.buscaTodasContas());
 	}
 
 	@GetMapping("/contas/ativas")
-	public List<Conta> buscarTodasContasAtivas() {
-		return contaService.buscaTodasContasAtivas();
+	public List<ContaDTO> buscarTodasContasAtivas() {
+		return ContaAdapter.listaDeContasParaDTO(contaService.buscaTodasContasAtivas());
 	}
 
 	@GetMapping("/contas/inativas")
-	public List<Conta> buscarTodasContasInativas() {
-		return contaService.buscaTodasContasInativas();
+	public List<ContaDTO> buscarTodasContasInativas() {
+		return ContaAdapter.listaDeContasParaDTO(contaService.buscaTodasContasInativas());
 	}
 
 	@GetMapping("/conta/{id}")
-	public Conta buscarContaPorId(@PathVariable(value = "id") Long id) {
-		return contaService.buscarContaPorId(id);
+	public ContaDTO buscarContaPorId(@PathVariable(value = "id") Long id) {
+		return ContaAdapter.contaParaDTO(contaService.buscarContaPorId(id));
 	}
 
 	// APAGAR
