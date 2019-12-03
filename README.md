@@ -13,6 +13,13 @@
 * [x] Criação de classes Adapter para cada DTO.
 
 ## Endpoints da API Rest implementanda
+
+* [x] Criar
+* [x] Buscar
+* [x] Deletar
+* [x] Atualizar
+* [x] Operações de depositar, sacar, ativar/desativar uma conta.
+
 ```
 /api
 
@@ -66,12 +73,6 @@
     /atualizar/{id}
     
 ```
-* [x] Criar
-* [x] Buscar
-* [x] Deletar
-* [x] Atualizar
-* [x] Operações de depositar, sacar, ativar/desativar uma conta.
-
 
 ## Consultas implementadas
 * [x] Todas as agências de uma dada cidade.
