@@ -76,5 +76,15 @@ public class ContaController {
 	public ContaDTO sacar(@RequestBody OperacaoFormDTO operacaoForm) {
 		return ContaAdapter.contaParaDTO(contaService.sacar(operacaoForm));
 	}
+	
+	@GetMapping("/ativar/{id}")
+	public void ativarConta(@PathVariable(value = "id") Long id) {
+		contaService.ativar(id);
+	}
+	
+	@GetMapping("/desativar/{id}")
+	public void desativarConta(@PathVariable(value = "id") Long id) {
+		contaService.desativar(id);
+	}
 
 }
