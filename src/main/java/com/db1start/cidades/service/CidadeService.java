@@ -75,7 +75,7 @@ public class CidadeService {
 		Cidade cidade = buscarCidadePorId(id);
 		cidade.setNome(cidadeForm.getNome());
 		cidade.setUf(estadoService.buscarEstadoPorId(cidadeForm.getIdUf()));
-		return cidade;
+		return cidadeRepository.save(cidade);
 	}
 
 }
