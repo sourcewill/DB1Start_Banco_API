@@ -90,7 +90,7 @@ public class ContaController {
 	
 	// ATUALIZAR
 	
-	@PutMapping("/atualizar{id")
+	@PutMapping("/atualizar{id}")
 	public ContaDTO atualizar(@PathVariable(value = "id") Long id, @RequestBody ContaFormDTO contaForm) {
 		return ContaAdapter.contaParaDTO(contaService.atualizar(id, contaForm));
 	}
