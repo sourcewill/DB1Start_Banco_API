@@ -81,8 +81,17 @@ public class ContaService {
 		contaRepository.deleteById(id);
 	}
 
+	// ATUALIZAR
+
+	public Conta atualizar(Long id, ContaFormDTO contaForm) {
+		Conta conta = buscarContaPorId(id);
+		conta.setCliente(clienteService.buscarClientePorId(contaForm.getIdCliente()));
+		conta.setAgencia(agenciaService.buscarAgenciaPorId(contaForm.getIdAgencia()));
+		return contaRepository.save(conta);
+	}
+
 	// OPERACOES
-	
+
 	public Conta depositar(OperacaoFormDTO operacaoForm) {
 		Conta conta = buscarContaPorId(operacaoForm.getIdConta());
 		conta.depositar(operacaoForm.getValor());
@@ -94,7 +103,7 @@ public class ContaService {
 		conta.depositar(valor);
 		return contaRepository.save(conta); // Devolve a conta atualizada
 	}
-	
+
 	public Conta sacar(OperacaoFormDTO operacaoForm) {
 		Conta conta = buscarContaPorId(operacaoForm.getIdConta());
 		conta.sacar(operacaoForm.getValor());

@@ -34,7 +34,7 @@ public class Conta {
 	@ManyToOne
 	@JoinColumn
 	private Agencia agencia;
-	
+
 	@OneToMany(mappedBy = "conta", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Operacao> historicoDeOperacoes;
 
@@ -83,6 +83,14 @@ public class Conta {
 
 	public List<Operacao> getHistoricoDeOperacoes() {
 		return historicoDeOperacoes;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public void setAgencia(Agencia agencia) {
+		this.agencia = agencia;
 	}
 
 	public void depositar(Double valor) {
