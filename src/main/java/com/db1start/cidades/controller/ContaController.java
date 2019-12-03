@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.db1start.cidades.domain.adapter.ContaAdapter;
 import com.db1start.cidades.domain.dto.ContaDTO;
 import com.db1start.cidades.domain.dto.ContaFormDTO;
+import com.db1start.cidades.domain.dto.OperacaoFormDTO;
 import com.db1start.cidades.service.ContaService;
 
 @RestController
@@ -62,6 +63,18 @@ public class ContaController {
 	@DeleteMapping("/apagarporid/{id}")
 	public void apagarContaPorId(@PathVariable(value = "id") Long id) {
 		contaService.apagarContaPorId(id);
+	}
+	
+	// OPERACOES
+	
+	@PostMapping("/depositar")
+	public ContaDTO depositar(@RequestBody OperacaoFormDTO operacaoForm) {
+		return ContaAdapter.contaParaDTO(contaService.depositar(operacaoForm));
+	}
+	
+	@PostMapping("/sacar")
+	public ContaDTO sacar(@RequestBody OperacaoFormDTO operacaoForm) {
+		return ContaAdapter.contaParaDTO(contaService.sacar(operacaoForm));
 	}
 
 }

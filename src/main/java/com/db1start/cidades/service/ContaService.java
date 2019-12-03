@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.db1start.cidades.domain.dto.ContaFormDTO;
+import com.db1start.cidades.domain.dto.OperacaoFormDTO;
 import com.db1start.cidades.domain.entity.Agencia;
 import com.db1start.cidades.domain.entity.Cliente;
 import com.db1start.cidades.domain.entity.Conta;
@@ -81,10 +82,22 @@ public class ContaService {
 	}
 
 	// OPERACOES
+	
+	public Conta depositar(OperacaoFormDTO operacaoForm) {
+		Conta conta = buscarContaPorId(operacaoForm.getIdConta());
+		conta.depositar(operacaoForm.getValor());
+		return contaRepository.save(conta); // Devolve a conta atualizada
+	}
 
 	public Conta depositar(Long idConta, Double valor) {
 		Conta conta = buscarContaPorId(idConta);
 		conta.depositar(valor);
+		return contaRepository.save(conta); // Devolve a conta atualizada
+	}
+	
+	public Conta sacar(OperacaoFormDTO operacaoForm) {
+		Conta conta = buscarContaPorId(operacaoForm.getIdConta());
+		conta.sacar(operacaoForm.getValor());
 		return contaRepository.save(conta); // Devolve a conta atualizada
 	}
 
