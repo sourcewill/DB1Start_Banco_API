@@ -43,6 +43,11 @@ public class AgenciaController {
 	public AgenciaDTO buscarAgenciaPorId(@PathVariable(value = "id") Long id) {
 		return AgenciaAdapter.agenciaParaDTO(agenciaService.buscarAgenciaPorId(id));
 	}
+	
+	@GetMapping("/buscarporid/{numero}")
+	public AgenciaDTO buscarAgenciaPorNumero(@PathVariable(value = "numero") String numeroAgencia) {
+		return AgenciaAdapter.agenciaParaDTO(agenciaService.buscarAgenciaPorNumero(numeroAgencia));
+	}
 
 	// APAGAR
 
