@@ -69,4 +69,13 @@ public class CidadeService {
 		cidadeRepository.deleteById(id);
 	}
 
+	// ATUALIZAR
+
+	public Cidade atualizar(Long id, CidadeFormDTO cidadeForm) {
+		Cidade cidade = buscarCidadePorId(id);
+		cidade.setNome(cidadeForm.getNome());
+		cidade.setUf(estadoService.buscarEstadoPorId(cidadeForm.getIdUf()));
+		return cidade;
+	}
+
 }

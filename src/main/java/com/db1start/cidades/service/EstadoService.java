@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.db1start.cidades.domain.dto.EstadoFormDTO;
 import com.db1start.cidades.domain.entity.Estado;
 import com.db1start.cidades.repository.EstadoRepository;
 
@@ -45,6 +46,14 @@ public class EstadoService {
 
 	public void apagarEstadoPorId(Long id) {
 		estadoRepository.deleteById(id);
+	}
+	
+	// ATUALIZAR
+	
+	public Estado atualizarEstadoPorId(Long id, EstadoFormDTO estadoForm) {
+		Estado estado = buscarEstadoPorId(id);
+		estado.setNome(estadoForm.getNome());
+		return estadoRepository.save(estado);
 	}
 
 }

@@ -52,4 +52,12 @@ public class Cidade {
 		return id;
 	}
 
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public void setUf(Estado uf) {
+		this.uf = uf;
+	}
+
 }

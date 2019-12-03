@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -52,6 +53,13 @@ public class CidadeController {
 	@DeleteMapping("/apagarporid/{id}")
 	public void apagarCidadePorId(@PathVariable(value = "id") Long id) {
 		cidadeService.apagarCidadePorId(id);
+	}
+	
+	// ATUALIZAR
+	
+	@PutMapping("/atualizar/{id}")
+	public CidadeDTO atualizar(@PathVariable(value = "id") Long id, CidadeFormDTO cidadeForm) {
+		return CidadeAdapter.cidadeParaDTO(cidadeService.atualizar(id, cidadeForm));
 	}
 
 }
