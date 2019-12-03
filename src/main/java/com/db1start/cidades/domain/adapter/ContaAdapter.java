@@ -15,7 +15,7 @@ public class ContaAdapter {
 		contaDTO.setId(conta.getId());
 		AgenciaDTO agenciaDTO = AgenciaAdapter.agenciaParaDTO(conta.getAgencia());
 		contaDTO.setAgenciaDTO(agenciaDTO);
-		contaDTO.setCliente(conta.getCliente());
+		contaDTO.setClienteDTO(ClienteAdapter.clienteParaDTO(conta.getCliente()));
 		List<OperacaoDTO> historicoDeOperacoesDTO = OperacaoAdapter.listaDeOperacoesParaDTO(conta.getHistoricoDeOperacoes());
 		contaDTO.setHistoricoDeOperacoesDTO(historicoDeOperacoesDTO);
 		contaDTO.setSaldo(conta.getSaldo());
