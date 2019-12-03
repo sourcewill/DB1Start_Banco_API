@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.db1start.cidades.domain.dto.ClienteFormDTO;
 import com.db1start.cidades.domain.entity.Cliente;
 import com.db1start.cidades.repository.ClienteRepository;
 
@@ -45,6 +46,13 @@ public class ClienteService {
 
 	public void apagarClientePorId(Long id) {
 		clienteRepository.deleteById(id);
+	}
+
+	public Cliente atualizar(Long id, ClienteFormDTO clienteForm) {
+		Cliente cliente = buscarClientePorId(id);
+		cliente.setNome(clienteForm.getNome());
+		cliente.setCpf(clienteForm.getCpf());
+		return clienteRepository.save(cliente);
 	}
 
 }

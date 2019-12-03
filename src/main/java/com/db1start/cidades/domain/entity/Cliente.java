@@ -50,4 +50,12 @@ public class Cliente {
 		return cpf;
 	}
 
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
 }
