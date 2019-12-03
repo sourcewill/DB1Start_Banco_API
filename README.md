@@ -8,6 +8,25 @@
 * [x] Criação repositórios para cada entidade.
 * [x] Criação serviços para cada entidade.
 * [x] Criação de classes de teste para fazer operações de inserção, consulta e deleção.
+* [x] Criação de controllers para endpoints de uma API Rest.
+* [x] Criação de classes DTO para requisições e respostas da API Rest.
+* [x] Criação de classes Adapter para cada DTO.
+
+## Endpoints da API Rest implementanda
+```
+/api
+  /agencia
+  /cidade
+  /cliente
+  /conta
+  /estado    
+```
+* [x] Criar
+* [x] Buscar
+* [x] Deletar
+* [x] Atualizar
+* [x] Operações de depositar, sacar, ativar/desativar uma conta.
+
 
 ## Consultas implementadas
 * [x] Todas as agências de uma dada cidade.
