@@ -39,12 +39,12 @@ public class ContaController {
 		return ContaAdapter.listaDeContasParaDTO(contaService.buscaTodasContas());
 	}
 
-	@GetMapping("/ativas")
+	@GetMapping("/buscartodasativas")
 	public List<ContaDTO> buscarTodasContasAtivas() {
 		return ContaAdapter.listaDeContasParaDTO(contaService.buscaTodasContasAtivas());
 	}
 
-	@GetMapping("/inativas")
+	@GetMapping("/buscartodasinativas")
 	public List<ContaDTO> buscarTodasContasInativas() {
 		return ContaAdapter.listaDeContasParaDTO(contaService.buscaTodasContasInativas());
 	}

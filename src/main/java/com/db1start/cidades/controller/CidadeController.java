@@ -43,6 +43,11 @@ public class CidadeController {
 		return CidadeAdapter.cidadeParaDTO(cidadeService.buscarCidadePorId(id));
 	}
 
+	@GetMapping("/buscarpornome/{nome}")
+	public CidadeDTO buscarCidadePorNome(@PathVariable(value = "nome") String nome) {
+		return CidadeAdapter.cidadeParaDTO(cidadeService.buscarCidadePorNome(nome));
+	}
+
 	// APAGAR
 
 	@DeleteMapping("/apagartodas")
@@ -54,9 +59,9 @@ public class CidadeController {
 	public void apagarCidadePorId(@PathVariable(value = "id") Long id) {
 		cidadeService.apagarCidadePorId(id);
 	}
-	
+
 	// ATUALIZAR
-	
+
 	@PutMapping("/atualizar/{id}")
 	public CidadeDTO atualizar(@PathVariable(value = "id") Long id, @RequestBody CidadeFormDTO cidadeForm) {
 		return CidadeAdapter.cidadeParaDTO(cidadeService.atualizar(id, cidadeForm));
