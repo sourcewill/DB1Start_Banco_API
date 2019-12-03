@@ -48,6 +48,8 @@ public class ClienteService {
 		clienteRepository.deleteById(id);
 	}
 
+	// ATUALIZAR
+	
 	public Cliente atualizar(Long id, ClienteFormDTO clienteForm) {
 		Cliente cliente = buscarClientePorId(id);
 		cliente.setNome(clienteForm.getNome());
