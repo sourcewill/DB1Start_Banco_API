@@ -58,7 +58,7 @@ public class CidadeController {
 	// ATUALIZAR
 	
 	@PutMapping("/atualizar/{id}")
-	public CidadeDTO atualizar(@PathVariable(value = "id") Long id, CidadeFormDTO cidadeForm) {
+	public CidadeDTO atualizar(@PathVariable(value = "id") Long id, @RequestBody CidadeFormDTO cidadeForm) {
 		return CidadeAdapter.cidadeParaDTO(cidadeService.atualizar(id, cidadeForm));
 	}
 
