@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -53,6 +54,13 @@ public class AgenciaController {
 	@DeleteMapping("/apagarporid/{id}")
 	public void apagarAgenciaPorId(@PathVariable(value = "id") Long id) {
 		agenciaService.apagarAgenciaPorId(id);
+	}
+	
+	// ATUALIZAR
+	
+	@PutMapping("/atualizar/{id}")
+	public AgenciaDTO atualizar(@PathVariable(value = "id") Long id, @RequestBody AgenciaFormDTO agenciaForm) {
+		return AgenciaAdapter.agenciaParaDTO(agenciaService.atualizar(id, agenciaForm));
 	}
 
 }

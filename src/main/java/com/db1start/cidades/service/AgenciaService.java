@@ -69,4 +69,12 @@ public class AgenciaService {
 		agenciaRepository.deleteById(id);
 	}
 
+	public Agencia atualizar(Long id, AgenciaFormDTO agenciaForm) {
+		Agencia agencia = buscarAgenciaPorId(id);
+		agencia.setNumeroAgencia(agenciaForm.getNumeroAgencia());
+		agencia.setNumeroBanco(agenciaForm.getNumeroBanco());
+		agencia.setCidade(cidadeService.buscarCidadePorId(agenciaForm.getIdCidade()));
+		return agenciaRepository.save(agencia);
+	}
+
 }

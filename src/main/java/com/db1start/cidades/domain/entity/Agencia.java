@@ -64,4 +64,16 @@ public class Agencia {
 		return numeroBanco;
 	}
 
+	public void setNumeroAgencia(String numeroAgencia) {
+		this.numeroAgencia = numeroAgencia;
+	}
+
+	public void setCidade(Cidade cidade) {
+		this.cidade = cidade;
+	}
+
+	public void setNumeroBanco(String numeroBanco) {
+		this.numeroBanco = numeroBanco;
+	}
+
 }
