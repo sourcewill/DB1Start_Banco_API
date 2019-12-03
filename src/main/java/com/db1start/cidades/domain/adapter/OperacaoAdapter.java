@@ -10,7 +10,7 @@ public class OperacaoAdapter {
 	
 	public static OperacaoDTO operacaoParaDTO(Operacao operacao){
 		OperacaoDTO operacaoDTO = new OperacaoDTO();
-		operacaoDTO.setId(operacao.getId());
+		operacaoDTO.setData(operacao.getData());
 		operacaoDTO.setTipo(operacao.getTipo());
 		operacaoDTO.setValor(operacao.getValor());
 		return operacaoDTO;

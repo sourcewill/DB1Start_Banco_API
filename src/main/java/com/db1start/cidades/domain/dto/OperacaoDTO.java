@@ -1,19 +1,21 @@
 package com.db1start.cidades.domain.dto;
 
+import java.util.Date;
+
 import com.db1start.cidades.domain.entity.TipoOperacao;
 
 public class OperacaoDTO {
 
-	private Long id;
+	private Date data;
 	private TipoOperacao tipo;
 	private Double valor;
 
-	public Long getId() {
-		return id;
+	public Date getData() {
+		return data;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setData(Date data) {
+		this.data = data;
 	}
 
 	public TipoOperacao getTipo() {

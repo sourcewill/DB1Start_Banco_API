@@ -1,6 +1,7 @@
 package com.db1start.cidades.domain.entity;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -93,7 +94,7 @@ public class Conta {
 			throw new RuntimeException("Valor deve ser maior que zero.");
 		}
 
-		Operacao operacao = new Operacao(this, TipoOperacao.DEPOSITO, valor);
+		Operacao operacao = new Operacao(this, new Date(), TipoOperacao.DEPOSITO, valor);
 		this.historicoDeOperacoes.add(operacao);
 		this.saldo += valor;
 	}
@@ -110,7 +111,7 @@ public class Conta {
 			throw new RuntimeException("Valor é maior do que o saldo atual.");
 		}
 
-		Operacao operacao = new Operacao(this, TipoOperacao.SAQUE, valor);
+		Operacao operacao = new Operacao(this, new Date(), TipoOperacao.SAQUE, valor);
 		this.historicoDeOperacoes.add(operacao);
 		this.saldo -= valor;
 	}
