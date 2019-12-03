@@ -33,6 +33,23 @@ public class Operacao {
 	private Double valor;
 
 	public Operacao(Conta conta, Date data, TipoOperacao tipo, Double valor) {
+
+		if (conta == null) {
+			throw new RuntimeException("conta nao pode ser nula");
+		}
+		if (data == null) {
+			throw new RuntimeException("data nao pode ser nula");
+		}
+		if (tipo == null) {
+			throw new RuntimeException("tipo nao pode ser nulo");
+		}
+		if (valor == null) {
+			throw new RuntimeException("valor nao pode ser nulo");
+		}
+		if (valor <= 0) {
+			throw new RuntimeException("valor nao pode ser menor que zero");
+		}
+		
 		this.conta = conta;
 		this.data = data;
 		this.tipo = tipo;
