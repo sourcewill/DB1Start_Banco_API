@@ -15,11 +15,56 @@
 ## Endpoints da API Rest implementanda
 ```
 /api
+
   /agencia
+    /criar
+    /buscartodas
+    /buscarporid/{id}
+    /buscarpornumero/{numero}
+    /apagartodas
+    /apagarporid/{id}
+    /atualizar/{id}
+    
   /cidade
+    /criar
+    /buscartodas
+    /buscarporid/{id}
+    /buscarpornome/{nome}
+    /apagartodas
+    /apagarporid/{id}
+    /atualizar/{id}
+    
   /cliente
+    /criar
+    /buscartodos
+    /buscarporid/{id}
+    /apagartodos
+    /apagarporid/{id}
+    /atualizar/{id}
+    
   /conta
-  /estado    
+    /criar
+    /buscartodas
+    /buscartodasativas
+    /buscartodasinativas
+    /buscarporid/{id}
+    /apagartodas
+    /apagarporid/{id}
+    /atualizar/{id}
+    /depositar
+    /sacar
+    /ativar
+    /desativar
+    
+  /estado
+    /criar
+    /buscartodos
+    /buscarporid/{id}
+    /buscarpornome/{nome}
+    /apagartodos
+    /apagarporid/{id}
+    /atualizar/{id}
+    
 ```
 * [x] Criar
 * [x] Buscar
